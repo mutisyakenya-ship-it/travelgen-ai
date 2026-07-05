@@ -4,9 +4,9 @@ import {
   addDoc,
 
   collection,
-
+  collectionGroup,
   deleteDoc,
-
+  where,
   doc,
 
   getDoc,
@@ -16,7 +16,7 @@ import {
   orderBy,
 
   query,
-
+ increment,
   serverTimestamp,
   updateDoc
 
@@ -151,7 +151,9 @@ export async function saveTrip(
       ...tripData,
       favorite: false,
       shareable: false,
-      createdAt:
+      views: 0,
+      likes: 0,
+      createdAt: 
 
       serverTimestamp()
 
@@ -160,7 +162,63 @@ export async function saveTrip(
   );
 
 }
+export async function incrementViews(
 
+tripId:string
+
+){
+
+const q = query(
+
+collectionGroup(
+
+db,
+
+"trips"
+
+),
+
+where(
+
+"shareable",
+
+"==",
+
+true
+
+)
+
+);
+
+const snapshot = await getDocs(q);
+
+const docRef = snapshot.docs.find(
+
+doc => doc.id === tripId
+
+);
+
+if(
+
+docRef
+
+){
+
+await updateDoc(
+
+docRef.ref,
+
+{
+
+views:increment(1)
+
+}
+
+);
+
+}
+
+}
 export async function getTrips(
 
   uid: string
@@ -212,6 +270,63 @@ export async function getTrips(
   );
 
 }
+export async function getSharedTrip(
+
+tripId:string
+
+){
+
+const q = query(
+
+collectionGroup(
+
+db,
+
+"trips"
+
+),
+
+where(
+
+"shareable",
+
+"==",
+
+true
+
+)
+
+);
+
+const snapshot = await getDocs(q);
+
+const trip = snapshot.docs.find(
+
+doc => doc.id === tripId
+
+);
+
+if(
+
+trip
+
+){
+
+return{
+
+id:trip.id,
+
+...trip.data()
+
+};
+
+}
+
+return null;
+
+}
+
+
 
 
 

@@ -9,6 +9,7 @@ import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import MyTrips from "./pages/MyTrips";
 import TripDetails from "./pages/TripDetails";
+import SharedTrip from "./pages/SharedTrips";
 function App() {
   return (
 
@@ -93,6 +94,13 @@ element={
 <ForgotPassword/>
 
 }
+
+/>
+<Route
+
+path="/share/:id"
+
+element={<SharedTrip/>}
 
 />
 

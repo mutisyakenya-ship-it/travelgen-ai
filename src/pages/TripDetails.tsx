@@ -457,7 +457,7 @@ async function handleShare() {
 
   const shareUrl =
 
-    `${window.location.origin}/trips/${trip.id}`;
+    `${window.location.origin}/share/${trip.id}`;
 
   const message =
 
