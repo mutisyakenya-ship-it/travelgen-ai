@@ -8,14 +8,12 @@ import {
   deleteDoc,
   where,
   doc,
-
   getDoc,
-
   getDocs,
-
   orderBy,
 arrayRemove,
 arrayUnion,
+onSnapshot,
   query,
  increment,
   serverTimestamp,
@@ -389,6 +387,49 @@ true
 )
 
 );
+export async function getSharedTrips(){
+
+const q = query(
+
+collectionGroup(
+
+db,
+
+"trips"
+
+),
+
+where(
+
+"shareable",
+
+"==",
+
+true
+
+),
+
+orderBy(
+
+"createdAt",
+
+"desc"
+
+)
+
+);
+
+const snapshot = await getDocs(q);
+
+return snapshot.docs.map(doc=>({
+
+id:doc.id,
+
+...doc.data()
+
+}));
+
+}
 
 const snapshot = await getDocs(q);
 
@@ -417,10 +458,6 @@ id:trip.id,
 return null;
 
 }
-
-
-
-
 
 export async function getTrip(
 
@@ -471,7 +508,153 @@ export async function getTrip(
   return null;
 
 }
+export async function addComment(
 
+ownerId:string,
+
+tripId:string,
+
+authorId:string,
+
+authorName:string,
+
+text:string
+
+){
+
+return addDoc(
+
+collection(
+
+db,
+
+"users",
+
+ownerId,
+
+"trips",
+
+tripId,
+
+"comments"
+
+),
+
+{
+
+authorId,
+
+authorName,
+
+text,
+
+createdAt:
+
+serverTimestamp()
+
+}
+
+);
+
+}
+export async function removeComment(
+
+ownerId:string,
+
+tripId:string,
+
+commentId:string
+
+){
+
+return deleteDoc(
+
+doc(
+
+db,
+
+"users",
+
+ownerId,
+
+"trips",
+
+tripId,
+
+"comments",
+
+commentId
+
+)
+
+);
+
+}
+export function subscribeComments(
+
+ownerId:string,
+
+tripId:string,
+
+callback:(comments:any[])=>void
+
+){
+
+const q = query(
+
+collection(
+
+db,
+
+"users",
+
+ownerId,
+
+"trips",
+
+tripId,
+
+"comments"
+
+),
+
+orderBy(
+
+"createdAt",
+
+"desc"
+
+)
+
+);
+
+return onSnapshot(
+
+q,
+
+(snapshot)=>{
+
+callback(
+
+snapshot.docs.map(
+
+doc=>({
+
+id:doc.id,
+
+...doc.data()
+
+})
+
+)
+
+);
+
+}
+
+);
+
+}
 
 
 export async function deleteTrip(

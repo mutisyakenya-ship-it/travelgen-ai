@@ -11,7 +11,7 @@ useState
 }
 
 from "react";
-
+import CommentSection from "../components/Comments/CommentSection";
 import {
 
 Link,
@@ -1210,6 +1210,13 @@ text-white
 Delete Trip
 
 </button>
+<CommentSection
+
+ownerId={auth.currentUser!.uid}
+
+tripId={trip.id}
+
+/>
 </div>
 
 </div>
