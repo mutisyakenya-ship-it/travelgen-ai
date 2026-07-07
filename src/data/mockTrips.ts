@@ -1,4 +1,4 @@
-import type { Itinerary } from "../types/itinerary";
+import type { Itinerary } from "../pages/types/itinerary";
 
 export const mockTrips: Itinerary[] = [
   {

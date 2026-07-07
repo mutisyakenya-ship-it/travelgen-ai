@@ -17,25 +17,7 @@ import.meta.env
 .VITE_GEMINI_API_KEY
 
 });
-
-export type Activity={
-
-title:string;
-
-description:string;
-
-icon:string;
-
-};
-
-export type Day={
-
-day:number;
-
-activities:Activity[];
-
-};
-
+import type { Day } from "../../types/itinerary";
 export async function generateItinerary(
 
 destination:string,

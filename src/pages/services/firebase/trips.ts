@@ -14,7 +14,8 @@ import {
   getDocs,
 
   orderBy,
-
+arrayRemove,
+arrayUnion,
   query,
  increment,
   serverTimestamp,
@@ -91,6 +92,96 @@ favorite
 );
 
 }
+export async function likeTrip(
+
+uid:string,
+
+tripId:string,
+
+userId:string
+
+){
+
+return updateDoc(
+
+doc(
+
+db,
+
+"users",
+
+uid,
+
+"trips",
+
+tripId
+
+),
+
+{
+
+likedBy:
+
+arrayUnion(
+
+userId
+
+),
+
+likes:
+
+increment(1)
+
+}
+
+);
+
+}
+export async function unlikeTrip(
+
+uid:string,
+
+tripId:string,
+
+userId:string
+
+){
+
+return updateDoc(
+
+doc(
+
+db,
+
+"users",
+
+uid,
+
+"trips",
+
+tripId
+
+),
+
+{
+
+likedBy:
+
+arrayRemove(
+
+userId
+
+),
+
+likes:
+
+increment(-1)
+
+}
+
+);
+
+}
 export async function makeTripShareable(
 
 uid:string,
@@ -153,6 +244,7 @@ export async function saveTrip(
       shareable: false,
       views: 0,
       likes: 0,
+      likedBy:[],
       createdAt: 
 
       serverTimestamp()

@@ -1,7 +1,7 @@
 
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-
+import type {Day} from "../pages/types/itinerary"
 import {
 
 useEffect,
@@ -36,7 +36,9 @@ getTrip,
 deleteTrip,
 updateTrip,
 toggleFavorite,
-makeTripShareable
+makeTripShareable,
+likeTrip,
+unlikeTrip
 
 }
 
@@ -45,24 +47,6 @@ from "../pages/services/firebase/trips";
 import DayCard from "../components/Itinerary/DayCard";
 import Timeline from "../components/Itinerary/TimeLine";
 
-type Activity = {
-
-title:string;
-
-description:string;
-
-icon:string;
-
-};
-
-type Day = {
-
-day:number;
-
-activities:Activity[];
-
-};
-
 type Trip = {
 
 id:string;
@@ -70,7 +54,7 @@ id:string;
 destination:string;
 
 budget:string;
-
+estimatedCost:string;
 days:number;
 
 travelStyle:string;
@@ -80,6 +64,8 @@ itinerary:Day[];
 favorite:boolean;
 
 shareable:boolean;
+likes:number;
+likedBy:string[];
 
 };
 
@@ -440,55 +426,157 @@ favorite:
 });
 
 }
+async function handleLike(){
 
-async function handleShare() {
+const user = auth.currentUser;
 
-  const user = auth.currentUser;
+if(!user || !trip) return;
 
-  if (!user || !trip) return;
+const liked =
 
-  await makeTripShareable(
+(trip.likedBy ?? [])
 
-    user.uid,
+.includes(user.uid);
 
-    trip.id
+if(liked){
 
-  );
+await unlikeTrip(
 
-  const shareUrl =
+user.uid,
 
-    `${window.location.origin}/share/${trip.id}`;
+trip.id,
 
-  const message =
+user.uid
 
-    `🌍 Check out my ${trip.destination} itinerary!\n\n${shareUrl}`;
+);
 
-  if ("share" in navigator) {
+setTrip({
 
-    await (navigator as Navigator).share?.({
+...trip,
 
-      title: trip.destination,
+likes:
 
-      text: message,
+trip.likes - 1,
 
-      url: shareUrl
+likedBy:
 
-    });
+(trip.likedBy ?? []).filter(
 
-  } else {
+id => id !== user.uid
 
-    window.open(
+)
 
-      `https://wa.me/?text=${encodeURIComponent(message)}`,
-
-      "_blank"
-
-    );
-
-  }
+});
 
 }
 
+else{
+
+await likeTrip(
+
+user.uid,
+
+trip.id,
+
+user.uid
+
+);
+
+setTrip({
+
+...trip,
+
+likes:
+
+trip.likes + 1,
+
+likedBy:[
+
+...(trip.likedBy ?? []),
+
+user.uid
+
+]
+
+});
+
+}
+
+}
+
+async function handleShare() {
+
+const user = auth.currentUser;
+
+if (!user || !trip) return;
+
+try {
+
+await makeTripShareable(
+
+user.uid,
+
+trip.id
+
+);
+
+const shareUrl =
+
+`${window.location.origin}/share/${trip.id}`;
+
+const message =
+
+`🌍 Check out my ${trip.destination} itinerary!\n\n${shareUrl}`;
+
+if (
+
+navigator.share &&
+
+navigator.canShare?.({
+
+url: shareUrl
+
+})
+
+) {
+
+await navigator.share({
+
+title: trip.destination,
+
+text: message,
+
+url: shareUrl
+
+});
+
+}
+
+else {
+
+window.open(
+
+`https://wa.me/?text=${encodeURIComponent(message)}`,
+
+"_blank"
+
+);
+
+}
+
+}
+
+catch(error){
+
+console.log(
+
+"Share cancelled"
+
+);
+
+}
+
+}
 async function exportPDF(){
 
 if(
@@ -1057,6 +1145,17 @@ trip.favorite
 }
 
 </button>
+<button
+
+onClick={handleLike}
+
+className="rounded-xl bg-rose-600 px-5 py-3 text-white"
+
+>
+
+❤️ {trip.likes}
+
+</button>
 
 <button
 
@@ -1111,7 +1210,6 @@ text-white
 Delete Trip
 
 </button>
-
 </div>
 
 </div>

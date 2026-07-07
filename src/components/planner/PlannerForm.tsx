@@ -7,10 +7,9 @@ import DurationSelector from "./DurationSelector";
 import TravelStyleSelector from "./TravelStyleSelector";
 import GenerateButton from "./GenerateButton";
 import GeneratedItinerary from "./GeneratedItinerary";
- import type {Day} from "../../pages/services/gemini/itineraryServices";
+import type {Day} from "../../pages/types/itinerary";
 import { auth } from "../../pages/services/firebase/firebase";
 import { saveTrip } from "../../pages/services/firebase/trips";
-
 import {
   generateItinerary
 } from "../../pages/services/gemini/itineraryServices";
