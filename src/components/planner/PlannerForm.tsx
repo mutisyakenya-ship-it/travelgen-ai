@@ -107,7 +107,7 @@ useState<Day[]>([]);
 
     setSuccess("");
 
-     day.estimatedCost
+     
 
     if (
 

@@ -21,7 +21,7 @@ useParams
 }
 
 from "react-router-dom";
-
+import GeneratedItinerary from "../components/Planner/GeneratedItinerary";
 import {
 
 auth
@@ -48,21 +48,16 @@ import DayCard from "../components/Itinerary/DayCard";
 import Timeline from "../components/Itinerary/TimeLine";
 
 type Trip = {
-
 id:string;
-
 destination:string;
-
 budget:string;
 estimatedCost:string;
 days:number;
-
 travelStyle:string;
-
 itinerary:Day[];
-
+accommodation: string;
+transport: string;
 favorite:boolean;
-
 shareable:boolean;
 likes:number;
 likedBy:string[];
@@ -971,56 +966,19 @@ text-purple-700
 </div>
 
 <div
-
-ref={itineraryRef}
-
-className="
-mt-10
-space-y-6
-"
-
+  ref={itineraryRef}
+  className="mt-10"
 >
-
-<h2
-
-className="
-text-2xl
-font-semibold
-"
-
->
-
-Itinerary
-
-</h2>
-
-{
-
-itinerary.map(
-
-(day)=>(
-
-<DayCard
-
-key={day.day}
-
-day={day.day}
-
->
-
-<Timeline
-
-activities={day.activities}
-
-/>
-
-</DayCard>
-
-)
-
-)
-
-}
+  <GeneratedItinerary
+    destination={trip.destination}
+    budget={trip.budget}
+    travelStyle={trip.travelStyle}
+    accommodation={(trip as any).accommodation ?? ""}
+    transport={(trip as any).transport ?? ""}
+    days={trip.days}
+    itinerary={trip.itinerary}
+  />
+</div>
 
 </div>
 
@@ -1136,7 +1094,7 @@ trip.favorite
 
 ?
 
-"❤️ Favorited"
+" ⭐Favorited"
 
 :
 
@@ -1153,7 +1111,7 @@ className="rounded-xl bg-rose-600 px-5 py-3 text-white"
 
 >
 
-❤️ {trip.likes}
+👍 {trip.likes}
 
 </button>
 
@@ -1222,9 +1180,6 @@ tripId={trip.id}
 </div>
 
 </div>
-
-</div>
-
 );
 
 }
