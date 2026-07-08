@@ -6,6 +6,8 @@ import BudgetSelector from "./BudgetSelector";
 import DurationSelector from "./DurationSelector";
 import TravelStyleSelector from "./TravelStyleSelector";
 import GenerateButton from "./GenerateButton";
+import AccommodationSelector from "./AccommodationSelector";
+import TransportSelector from "./TransportSelector"
 import GeneratedItinerary from "./GeneratedItinerary";
 import type {Day} from "../../pages/types/itinerary";
 import { auth } from "../../pages/services/firebase/firebase";
@@ -47,6 +49,15 @@ function PlannerForm() {
     setTravelStyle
 
   ] = useState("Adventure");
+const [
+  accommodation,
+  setAccommodation
+] = useState("Hotel");
+
+const [
+  transport,
+  setTransport
+] = useState("Flight");
 const [
 
 itinerary,
@@ -96,7 +107,7 @@ useState<Day[]>([]);
 
     setSuccess("");
 
-
+     day.estimatedCost
 
     if (
 
@@ -119,75 +130,40 @@ useState<Day[]>([]);
     try {
 
       setLoading(true);
+     setItinerary([])
+     const result = await generateItinerary(
+  destination,
+  budget,
+  days,
+  travelStyle,
+  accommodation,
+  transport
+);
 
+setItinerary(result);
+setTimeout(() => {
+  document
+    .getElementById("generated-itinerary")
+    ?.scrollIntoView({
+      behavior: "smooth"
+    });
+}, 300);
 
+const user = auth.currentUser;
 
-      const result =
+if (!user) {
+  throw new Error("User not authenticated");
+}
 
-        await generateItinerary(
-
-          destination,
-
-          budget,
-
-          days,
-
-          travelStyle
-
-        );
-
-
-
-      setItinerary(
-
-        result
-
-      );
-
-
-
-      const user =
-
-        auth.currentUser;
-
-
-
-      if (
-
-        !user
-
-      ) {
-
-        throw new Error(
-
-          "User not authenticated"
-
-        );
-
-      }
-
-
-
-      await saveTrip(
-
-        user.uid,
-
-        {
-
-          destination,
-
-          budget,
-
-          days,
-
-          travelStyle,
-
-          itinerary: result
-
-        }
-
-      );
-
+await saveTrip(user.uid, {
+  destination,
+  budget,
+  days,
+  travelStyle,
+  accommodation,
+  transport,
+  itinerary: result,
+});
 
 
       setSuccess(
@@ -379,6 +355,15 @@ useState<Day[]>([]);
           onChange={setTravelStyle}
 
         />
+        <AccommodationSelector
+  value={accommodation}
+  onChange={setAccommodation}
+/>
+
+<TransportSelector
+  value={transport}
+  onChange={setTransport}
+/>
 
 
 
@@ -393,11 +378,14 @@ useState<Day[]>([]);
 
 
       <GeneratedItinerary
-
-        itinerary={itinerary}
-
-      />
-
+  destination={destination}
+  budget={budget}
+  days={days}
+  travelStyle={travelStyle}
+  accommodation={accommodation}
+  transport={transport}
+  itinerary={itinerary}
+/>
     </div>
 
   );

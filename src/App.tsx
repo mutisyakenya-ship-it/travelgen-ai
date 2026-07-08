@@ -10,6 +10,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import MyTrips from "./pages/MyTrips";
 import TripDetails from "./pages/TripDetails";
 import SharedTrip from "./pages/SharedTrips";
+import Explore from "./pages/Explore";
 function App() {
   return (
 
@@ -102,6 +103,10 @@ path="/share/:id"
 
 element={<SharedTrip/>}
 
+/>
+<Route
+path="/explore"
+element={<Explore/>}
 />
 
     </Routes>

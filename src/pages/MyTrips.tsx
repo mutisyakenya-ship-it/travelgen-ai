@@ -184,33 +184,60 @@ function MyTrips() {
 
     >
 
-      <div
+     <div
+  className="
+  mb-8
+  flex
+  items-center
+  justify-between
+  flex-wrap
+  gap-4
+  "
+>
+  <h1
+    className="
+    text-4xl
+    font-bold
+    text-slate-800
+    "
+  >
+    My Trips
+  </h1>
 
-        className="
-        mb-8
-        flex
-        items-center
-        justify-between
-        "
+  <div className="flex gap-3">
 
-      >
+    <Link
+      to="/planner"
+      className="
+      rounded-xl
+      bg-green-700
+      px-5
+      py-3
+      text-white
+      hover:bg-green-800
+      transition
+      "
+    >
+      Plan your Trip
+    </Link>
 
-        <h1
+    <Link
+      to="/explore"
+      className="
+      rounded-xl
+      bg-blue-600
+      px-5
+      py-3
+      text-white
+      hover:bg-blue-700
+      transition
+      "
+    >
+      Explore Trips
+    </Link>
 
-          className="
-          text-4xl
-          font-bold
-          text-slate-800
-          "
-
-        >
-
-          My Trips
-
-        </h1>
-
-      </div>
-
+  </div>
+</div>
       <input
 
         value={search}
@@ -258,7 +285,7 @@ function MyTrips() {
 
           "Budget",
 
-          "Cultural"
+          "Family"
 
         ].map(
 
@@ -473,7 +500,7 @@ function MyTrips() {
 
                     <span>
 
-                      ✈️
+                      
 
                     </span>
 

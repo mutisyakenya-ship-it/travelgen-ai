@@ -387,6 +387,31 @@ true
 )
 
 );
+
+const snapshot = await getDocs(q);
+
+const trip = snapshot.docs.find(
+
+doc => doc.id === tripId
+
+);
+
+if(trip){
+
+return{
+
+id:trip.id,
+
+...trip.data()
+
+};
+
+}
+
+return null;
+
+}
+
 export async function getSharedTrips(){
 
 const q = query(
@@ -430,35 +455,6 @@ id:doc.id,
 }));
 
 }
-
-const snapshot = await getDocs(q);
-
-const trip = snapshot.docs.find(
-
-doc => doc.id === tripId
-
-);
-
-if(
-
-trip
-
-){
-
-return{
-
-id:trip.id,
-
-...trip.data()
-
-};
-
-}
-
-return null;
-
-}
-
 export async function getTrip(
 
   uid: string,
