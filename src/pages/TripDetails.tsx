@@ -44,9 +44,6 @@ unlikeTrip
 
 from "../pages/services/firebase/trips";
 
-import DayCard from "../components/Itinerary/DayCard";
-import Timeline from "../components/Itinerary/TimeLine";
-
 type Trip = {
 id:string;
 destination:string;

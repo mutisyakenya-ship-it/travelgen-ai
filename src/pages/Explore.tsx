@@ -21,7 +21,7 @@ function Explore() {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [filter,] = useState("All");
 
   // Load trips
   useEffect(() => {
