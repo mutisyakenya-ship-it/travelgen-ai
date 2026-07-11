@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import heroImage from "../../assets/images/hero.jpg";
 import safari from "../../assets/images/safari.jpg";
-import hotel from "../../assets/images/hotel .jpg";
+import hotel from "../../assets/images/hotel.jpg";
 import food from "../../assets/images/food.jpg";
 
 function Hero() {
