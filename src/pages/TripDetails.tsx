@@ -11,7 +11,7 @@ useState
 }
 
 from "react";
-import CommentSection from "../components/comments/CommentSection";
+import CommentSection from "../components/comments_temp/CommentSection";
 import {
 
 Link,
