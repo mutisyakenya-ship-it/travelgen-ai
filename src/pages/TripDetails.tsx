@@ -11,7 +11,7 @@ useState
 }
 
 from "react";
-import CommentSection from "../components/Comments/CommentSection";
+import CommentSection from "../components/comments/CommentSection";
 import {
 
 Link,
@@ -21,7 +21,7 @@ useParams
 }
 
 from "react-router-dom";
-import GeneratedItinerary from "../components/Planner/GeneratedItinerary";
+import GeneratedItinerary from "../components/planner/GeneratedItinerary";
 import {
 
 auth

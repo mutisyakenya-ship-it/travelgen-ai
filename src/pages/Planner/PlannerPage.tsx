@@ -1,5 +1,5 @@
 
-import PlannerForm from "../../components/Planner/PlannerForm";
+import PlannerForm from "../../components/planner/PlannerForm";
 
 function Planner() {
 

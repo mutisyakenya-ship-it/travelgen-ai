@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import QRCode from "react-qr-code";
 import { getSharedTrip, incrementViews } from "./services/firebase/trips";
 import { Link } from "react-router-dom";
-import DayCard from "../components/Itinerary/DayCard";
-import Timeline from "../components/Itinerary/TimeLine";
+import DayCard from "../components/itinerary/DayCard";
+import Timeline from "../components/itinerary/TimeLine";
 
 type Activity = {
   title:string;

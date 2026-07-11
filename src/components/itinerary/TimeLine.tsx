@@ -1,4 +1,4 @@
-import ActivityCard from "../../components/Itinerary/ActivityCard";
+import ActivityCard from "../../components/itinerary/ActivityCard";
 type Activity={
 
 title:string;
