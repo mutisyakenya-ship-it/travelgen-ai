@@ -1,7 +1,7 @@
 
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import type {Day} from "../pages/types/itinerary"
+import type {Day} from "./types/itinerary"
 import {
 
 useEffect,
