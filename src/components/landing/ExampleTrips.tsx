@@ -1,4 +1,4 @@
-import naivasha from "../../assets/images/naivasha.jpg";
+import Naivasha from "../../assets/images/Naivasha.jpg";
 import nairobi from "../../assets/images/nairobi.jpg";
 import Mara from "../../assets/images/Mara.jpg";
 import mombasa from "../../assets/images/mombasa.jpg";
@@ -8,7 +8,7 @@ const trips = [
   {
     id: 1,
     title: "Weekend in Naivasha",
-    image: naivasha,
+    image: Naivasha,
     days: 3,
     budget: "KES 25,000",
     highlights: [

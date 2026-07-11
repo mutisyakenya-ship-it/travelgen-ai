@@ -1,4 +1,4 @@
-import naivasha from "../../assets/images/naivasha.jpg";
+import Naivasha from "../../assets/images/Naivasha.jpg";
 import hero from "../../assets/images/hero.jpg";
 import Mara from "../../assets/images/Mara.jpg";
 import nairobi from "../../assets/images/nairobi.jpg";
@@ -9,7 +9,7 @@ const destinations = [
 {
 id:1,
 name:"Naivasha",
-image:naivasha
+image:Naivasha
 },
 
 {
