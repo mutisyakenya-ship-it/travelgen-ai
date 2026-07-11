@@ -1,6 +1,6 @@
 import naivasha from "../../assets/images/naivasha.jpg";
 import nairobi from "../../assets/images/nairobi (2).jpg";
-import mara from "../../assets/images/mara.jpg";
+import mara from "../../assets/images/Mara.jpg";
 import mombasa from "../../assets/images/mombasa.jpg";
 import hero from "../../assets/images/hero.jpg";
 
