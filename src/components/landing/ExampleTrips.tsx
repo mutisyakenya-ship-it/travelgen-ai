@@ -1,6 +1,6 @@
 import naivasha from "../../assets/images/naivasha.jpg";
 import nairobi from "../../assets/images/nairobi (2).jpg";
-import mara from "../../assets/images/Mara.jpg";
+import Mara from "../../assets/images/Mara.jpg";
 import mombasa from "../../assets/images/mombasa.jpg";
 import hero from "../../assets/images/hero.jpg";
 
@@ -34,7 +34,7 @@ const trips = [
   {
     id: 3,
     title: "Maasai Mara Safari",
-    image: mara,
+    image: Mara,
     days: 4,
     budget: "KES 75,000",
     highlights: [

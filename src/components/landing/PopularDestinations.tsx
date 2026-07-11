@@ -1,7 +1,7 @@
 import naivasha from "../../assets/images/naivasha.jpg";
 import hero from "../../assets/images/hero.jpg";
-import mara from "../../assets/images/Mara.jpg";
-import nairobi from "../../assets/images/nairobi (2).jpg";
+import Mara from "../../assets/images/Mara.jpg";
+import nairobi from "../../assets/images/nairobi.jpg";
 import mombasa from "../../assets/images/mombasa.jpg";
 
 const destinations = [
@@ -21,7 +21,7 @@ image:hero
 {
 id:3,
 name:"Maasai Mara",
-image:mara
+image:Mara
 },
 
 {
