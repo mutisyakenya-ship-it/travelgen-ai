@@ -1,5 +1,4 @@
-import ActivityCard from "./ActivityCard";
-
+import ActivityCard from "../../components/Itinerary/ActivityCard";
 type Activity={
 
 title:string;
@@ -9,7 +8,6 @@ description:string;
 icon:string;
 
 };
-
 type Props={
 
 activities:Activity[];
