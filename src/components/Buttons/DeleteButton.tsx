@@ -1,10 +1,10 @@
-import { Share2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 type Props = {
   onClick: () => void;
 };
 
-function ShareButton({
+function DeleteButton({
   onClick,
 }: Props) {
   return (
@@ -15,20 +15,20 @@ function ShareButton({
       items-center
       gap-2
       rounded-xl
-      bg-indigo-600
+      bg-red-600
       px-5
       py-3
       font-semibold
       text-white
       transition
-      hover:bg-indigo-700
+      hover:bg-red-700
       "
     >
-      <Share2 size={18} />
+      <Trash2 size={18} />
 
-      Share
+      Delete Trip
     </button>
   );
 }
 
-export default ShareButton;
+export default DeleteButton;

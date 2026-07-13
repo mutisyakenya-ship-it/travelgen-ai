@@ -1,57 +1,39 @@
-type Props={
+import { Save } from "lucide-react";
 
-onClick:()=>void;
-
-loading?:boolean;
-
+type Props = {
+  onClick: () => void;
+  loading?: boolean;
 };
 
 function SaveButton({
+  onClick,
+  loading = false,
+}: Props) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={loading}
+      className="
+      inline-flex
+      items-center
+      gap-2
+      rounded-xl
+      bg-emerald-600
+      px-5
+      py-3
+      font-semibold
+      text-white
+      transition
+      hover:bg-emerald-700
+      disabled:cursor-not-allowed
+      disabled:opacity-60
+      "
+    >
+      <Save size={18} />
 
-onClick,
-
-loading=false
-
-}:Props){
-
-return(
-
-<button
-
-onClick={onClick}
-
-disabled={loading}
-
-className="
-rounded-xl
-bg-green-700
-px-5
-py-3
-text-white
-hover:bg-green-800
-transition
-"
-
->
-
-{
-
-loading
-
-?
-
-"Saving..."
-
-:
-
-"Save Trip"
-
-}
-
-</button>
-
-);
-
+      {loading ? "Saving..." : "Save Trip"}
+    </button>
+  );
 }
 
 export default SaveButton;

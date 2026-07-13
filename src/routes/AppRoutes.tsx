@@ -5,7 +5,7 @@ import PlannerPage from '../pages/Planner/PlannerPage'
 import LoginPage from '../pages/Auth/LoginPage'
 import RegisterPage from '../pages/Auth/RegistrerPage'
 import DashboardPage from '../pages/Dashboard/DashboardPage'
-import PortfolioPage from '../pages/Portfolio/PortfolioPage'
+import PortfolioPage from '../pages/Portfolio/Portfolio'
 import ItineraryPage from '../pages/Itinerary/ItineraryPage'
 
 function AppRoutes() {

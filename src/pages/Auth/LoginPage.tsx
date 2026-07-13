@@ -6,7 +6,7 @@ login,
 googleLogin
 }
 
-from "../../pages/services/firebase/auth";
+from "../../services/firebase/auth";
 
 function Login(){
 

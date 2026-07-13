@@ -9,12 +9,12 @@ import GenerateButton from "./GenerateButton";
 import AccommodationSelector from "./AccommodationSelector";
 import TransportSelector from "./TransportSelector"
 import GeneratedItinerary from "./GeneratedItinerary";
-import type {Day} from "../../pages/types/itinerary";
-import { auth } from "../../pages/services/firebase/firebase";
-import { saveTrip } from "../../pages/services/firebase/trips";
+import type {Day} from "../../types/itinerary";
+import { auth } from "../../services/firebase/firebase";
+import { saveTrip } from "../../services/firebase/trips";
 import {
   generateItinerary
-} from "../../pages/services/gemini/itineraryServices";
+} from "../../services/gemini/itineraryServices";
 
 function PlannerForm() {
 

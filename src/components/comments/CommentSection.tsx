@@ -21,7 +21,7 @@ auth
 
 }
 
-from "../../pages/services/firebase/firebase";
+from "../../services/firebase/firebase";
 
 import {
 
@@ -31,7 +31,7 @@ subscribeComments
 
 }
 
-from "../../pages/services/firebase/trips";
+from "../../services/firebase/trips";
 
 import type {
 
@@ -39,7 +39,7 @@ Comment
 
 }
 
-from "../../pages/types/comment";
+from "../../types/comment";
 type Props={
 
 ownerId:string;

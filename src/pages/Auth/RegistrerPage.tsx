@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   register,
   googleLogin
-} from "../../pages/services/firebase/auth";
+} from "../../services/firebase/auth";
 
 function Register() {
 

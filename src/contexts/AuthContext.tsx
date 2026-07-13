@@ -7,7 +7,7 @@ import {
 
 import { type User,onAuthStateChanged} from "firebase/auth";
 
-import { auth } from "../pages/services/firebase/firebase";
+import { auth } from "../services/firebase/firebase";
 
 type AuthContextType = {
 

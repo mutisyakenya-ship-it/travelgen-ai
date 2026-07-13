@@ -1,12 +1,14 @@
-import { Heart } from "lucide-react";
+import { ThumbsUp } from "lucide-react";
 
 type Props = {
-  favorite: boolean;
+  likes: number;
+  liked: boolean;
   onClick: () => void;
 };
 
-function FavoriteButton({
-  favorite,
+function LikeButton({
+  likes,
+  liked,
   onClick,
 }: Props) {
   return (
@@ -24,20 +26,20 @@ function FavoriteButton({
       transition
 
       ${
-        favorite
-          ? "bg-pink-600 hover:bg-pink-700"
-          : "bg-slate-600 hover:bg-slate-700"
+        liked
+          ? "bg-blue-700 hover:bg-blue-800"
+          : "bg-blue-600 hover:bg-blue-700"
       }
       `}
     >
-      <Heart
+      <ThumbsUp
         size={18}
-        fill={favorite ? "currentColor" : "none"}
+        fill={liked ? "currentColor" : "none"}
       />
 
-      {favorite ? "Favorited" : "Favorite"}
+      {likes}
     </button>
   );
 }
 
-export default FavoriteButton;
+export default LikeButton;

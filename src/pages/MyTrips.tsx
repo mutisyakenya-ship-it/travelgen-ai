@@ -2,24 +2,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { auth } from "../pages/services/firebase/firebase";
-import { getTrips } from "../pages/services/firebase/trips";
-
-type Trip = {
-
-  id: string;
-
-  destination: string;
-
-  budget: string;
-
-  days: number;
-
-  travelStyle: string;
-
-  itinerary: string;
-
-};
+import { auth } from "../services/firebase/firebase";
+import { getTrips } from "../services/firebase/trips";
+import type { Trip } from "../types/itinerary";
 
 function MyTrips() {
 

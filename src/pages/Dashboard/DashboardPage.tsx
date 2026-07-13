@@ -12,7 +12,7 @@ auth
 
 }
 
-from "../services/firebase/firebase";
+from "../../services/firebase/firebase";
 
 import {
 
@@ -20,7 +20,7 @@ getTrips
 
 }
 
-from "../services/firebase/trips";
+from "../../services/firebase/trips";
 
 
 type Trip={

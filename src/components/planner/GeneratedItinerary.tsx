@@ -2,7 +2,7 @@ import DayCard from "../itinerary/DayCard";
 import Timeline from "../itinerary/TimeLine";
 import TripHero from "./TripHero";
 
-import type { Day } from "../../pages/types/itinerary";
+import type { Day } from "../../types/itinerary";
 
 type Props = {
   destination: string;

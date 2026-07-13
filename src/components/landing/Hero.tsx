@@ -38,7 +38,7 @@ function Hero() {
 
             >
 
-              Discover Kenya Through
+              Discover the world Through
 
               <span className="block text-green-700">
 
