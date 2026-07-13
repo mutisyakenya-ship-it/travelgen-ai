@@ -48,20 +48,17 @@ My Trips
 
 </Link>
 
-        <button
-
-          className="
-          rounded-xl
-          border
-          px-6
-          py-3
-          "
-
-        >
-
-          Portfolio
-
-        </button>
+      <Link
+  to="/portfolio"
+  className="
+  rounded-xl
+  border
+  px-6
+  py-3
+  "
+>
+  Portfolio
+</Link>
 
       </div>
 
