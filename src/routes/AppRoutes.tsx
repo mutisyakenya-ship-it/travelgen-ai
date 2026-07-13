@@ -16,7 +16,9 @@ function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/destinations" element={<LandingPage />} />
       <Route path="/itinerary/:id" element={<ItineraryPage />} />
+      <Route path="*" element={<LandingPage />} />
     </Routes>
   )
 }

@@ -86,6 +86,10 @@ function App() {
 
       />
       <Route
+        path="/destinations"
+        element={<Landing />}
+      />
+      <Route
 
         path="/trips"
 
@@ -123,7 +127,7 @@ element={<SharedTrip/>}
 path="/explore"
 element={<Explore/>}
 />
-
+<Route path="*" element={<Landing />} />
 
     </Routes>
 
