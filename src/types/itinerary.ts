@@ -32,3 +32,11 @@ export interface Trip {
   views: number;
   createdAt: Timestamp | null;
 }
+export interface Comment {
+  id: string;
+  authorId: string;
+  authorName: string;
+  text: string;
+  createdAt: Timestamp | null;
+}
+export type Budget = "Low" | "Medium" | "High";

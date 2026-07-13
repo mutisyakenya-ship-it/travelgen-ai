@@ -1,10 +1,9 @@
-type Props={
+import type { Budget } from "../../types/itinerary";
 
-value:string
-
-onChange:(value:string)=>void
-
-}
+type Props = {
+  value: Budget;
+  onChange: (value: Budget) => void;
+};
 
 function BudgetSelector({
 
@@ -31,16 +30,7 @@ Budget
 <select
 
 value={value}
-
-onChange={(e)=>
-
-onChange(
-
-e.target.value
-
-)
-
-}
+onChange={(e) => onChange (e.target.value as Budget)}
 
 className="
 w-full

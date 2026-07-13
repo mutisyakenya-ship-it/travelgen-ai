@@ -1,3 +1,4 @@
+import type {Comment as TripComment } from "../../types/comment"
 import {
   addDoc,
   arrayRemove,
@@ -19,6 +20,7 @@ import {
 
 import { db } from "./firebase";
 import type { Trip } from "../../types/itinerary";
+
 
 
 export async function saveTrip(
@@ -65,7 +67,7 @@ export async function getTrips(uid: string): Promise<Trip[]> {
 export async function getTrip(
   uid: string,
   tripId: string
-): Promise<Trip | null> {
+): Promise<Trip | null > {
   const ref = doc(db, "users", uid, "trips", tripId);
 
   const snapshot = await getDoc(ref);
@@ -256,7 +258,7 @@ export async function removeComment(
 export function subscribeComments(
   ownerId: string,
   tripId: string,
-  callback: (comments: unknown[]) => void
+  callback: (comments: TripComment[]) => void
 ) {
   const q = query(
     collection(
@@ -271,11 +273,11 @@ export function subscribeComments(
   );
 
   return onSnapshot(q, (snapshot) => {
-    callback(
-      snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-    );
+    const comments: TripComment[] = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...(doc.data() as Omit<TripComment, "id">),
+    }));
+
+    callback(comments);
   });
 }

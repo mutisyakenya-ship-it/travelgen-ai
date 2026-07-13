@@ -8,8 +8,8 @@ type Props = {
   destination: string;
   budget: string;
   travelStyle: string;
-  accommodation: string;
-  transport: string;
+  accommodationType: string;
+  transportType: string;
   days: number;
   itinerary: Day[];
 };
@@ -18,8 +18,8 @@ function GeneratedItinerary({
   destination,
   budget,
   travelStyle,
-  accommodation,
-  transport,
+  accommodationType,
+  transportType,
   days,
   itinerary,
 }: Props) {
@@ -49,8 +49,8 @@ function GeneratedItinerary({
         destination={destination}
         budget={budget}
         travelStyle={travelStyle}
-        accommodation={accommodation}
-        transport={transport}
+        accommodationType={accommodationType}
+        transportType={transportType}
         days={days}
       />
 

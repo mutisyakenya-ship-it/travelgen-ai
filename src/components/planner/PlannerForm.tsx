@@ -1,6 +1,5 @@
-
+import type { Day, Budget } from "../../types/itinerary";
 import { useState } from "react";
-
 import DestinationField from "./DestinationField";
 import BudgetSelector from "./BudgetSelector";
 import DurationSelector from "./DurationSelector";
@@ -9,7 +8,6 @@ import GenerateButton from "./GenerateButton";
 import AccommodationSelector from "./AccommodationSelector";
 import TransportSelector from "./TransportSelector"
 import GeneratedItinerary from "./GeneratedItinerary";
-import type {Day} from "../../types/itinerary";
 import { auth } from "../../services/firebase/firebase";
 import { saveTrip } from "../../services/firebase/trips";
 import {
@@ -26,14 +24,7 @@ function PlannerForm() {
 
   ] = useState("");
 
-  const [
-
-    budget,
-
-    setBudget
-
-  ] = useState("Medium");
-
+ const [budget, setBudget] = useState<Budget>("Medium");
   const [
 
     days,
@@ -160,8 +151,8 @@ await saveTrip(user.uid, {
   budget,
   days,
   travelStyle,
-  accommodation,
-  transport,
+  accommodationType: accommodation,
+  transportType:transport,
   itinerary: result,
 });
 
@@ -382,8 +373,8 @@ await saveTrip(user.uid, {
   budget={budget}
   days={days}
   travelStyle={travelStyle}
-  accommodation={accommodation}
-  transport={transport}
+  accommodationType={accommodation}
+  transportType={transport}
   itinerary={itinerary}
 />
     </div>

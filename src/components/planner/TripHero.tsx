@@ -2,8 +2,8 @@ type Props = {
   destination: string;
   budget: string;
   travelStyle: string;
-  accommodation: string;
-  transport: string;
+  accommodationType: string;
+  transportType: string;
   days: number;
 };
 
@@ -11,8 +11,8 @@ function TripHero({
   destination,
   budget,
   travelStyle,
-  accommodation,
-  transport,
+  accommodationType,
+  transportType,
   days,
 }: Props) {
   return (
@@ -73,7 +73,7 @@ function TripHero({
             </p>
 
             <h3 className="mt-2 text-xl font-bold">
-               {accommodation}
+               {accommodationType}
             </h3>
 
           </div>
@@ -85,7 +85,7 @@ function TripHero({
             </p>
 
             <h3 className="mt-2 text-xl font-bold">
-               {transport}
+               {transportType}
             </h3>
 
           </div>

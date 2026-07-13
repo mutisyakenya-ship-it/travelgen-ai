@@ -434,12 +434,12 @@ function TripDetails() {
               travelStyle={
                 editing ? travelStyle : trip.travelStyle
               }
-              accommodation={
+              accommodationType={
                 editing
                   ? accommodationType
                   : trip.accommodationType
               }
-              transport={
+              transportType={
                 editing
                   ? transportType
                   : trip.transportType

@@ -1,20 +1,6 @@
 import { Link } from "react-router-dom";
+import type { Trip } from "../../types/itinerary";
 
-type Trip = {
-
-  id:string;
-
-  destination:string;
-
-  budget:string;
-
-  days:number;
-
-  travelStyle:string;
-
-  itinerary:string;
-
-};
 
 type Props = {
 

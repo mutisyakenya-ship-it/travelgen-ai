@@ -1,43 +1,12 @@
 import { useEffect } from "react";
 import { useState } from "react";
-
 import WelcomeBanner from "../../components/Dashboard/WelcomeBanner";
 import StatsCard from "../../components/Dashboard/StatsCard";
 import QuickActions from "../../components/Dashboard/QuickActions";
 import RecentTrips from "../../components/Dashboard/RecentTrips";
-
-import {
-
-auth
-
-}
-
-from "../../services/firebase/firebase";
-
-import {
-
-getTrips
-
-}
-
-from "../../services/firebase/trips";
-
-
-type Trip={
-
-id:string;
-
-destination:string;
-
-budget:string;
-
-days:number;
-
-travelStyle:string;
-
-itinerary:string;
-
-};
+import { auth }from "../../services/firebase/firebase";
+import { getTrips}from "../../services/firebase/trips";
+import type { Trip } from "../../types/itinerary";
 
 
 function Dashboard(){
@@ -113,11 +82,7 @@ user.uid
 
 );
 
-setTrips(
-
-data as Trip[]
-
-);
+setTrips(data);
 
 }
 
