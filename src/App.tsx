@@ -1,5 +1,4 @@
 import {  Routes, Route } from "react-router-dom";
-
 import Landing from "./pages/Landing/LandingPage";
 import Login from "./pages/Auth/LoginPage";
 import Register from "./pages/Auth/RegistrerPage";
@@ -108,6 +107,7 @@ element={<SharedTrip/>}
 path="/explore"
 element={<Explore/>}
 />
+<Route path="/portfolio" element={<MyTrips />} />
 
     </Routes>
 
