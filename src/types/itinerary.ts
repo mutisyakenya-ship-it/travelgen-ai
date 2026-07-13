@@ -24,7 +24,7 @@ export interface Trip {
   travelStyle: string;
   itinerary: Day[];
   accommodationType: string;
-  transporType: string;
+  transportType: string;
   favorite: boolean;
   shareable: boolean;
   likes: number;

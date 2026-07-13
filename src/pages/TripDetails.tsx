@@ -45,15 +45,15 @@ function TripDetails() {
 
   const [destination, setDestination] = useState("");
 
-  const [budget, setBudget] = useState("");
+  const [budget, setBudget] = useState<"Low" | "Medium" | "High">("Low");
 
   const [days, setDays] = useState(0);
 
   const [travelStyle, setTravelStyle] = useState("");
 
-  const [accommodation, setAccommodation] = useState("");
+  const [accommodationType, setAccommodationType] = useState("");
 
-  const [transport, setTransport] = useState("");
+  const [transportType, setTransportType] = useState("");
 
   const [itinerary, setItinerary] = useState<Day[]>([]);
 
@@ -72,7 +72,10 @@ function TripDetails() {
     try {
       const data = await getTrip(user.uid, id);
 
-      if (!data) return;
+      if (!data) {
+        setLoading(false);
+        return;
+      }
 
       setTrip(data);
 
@@ -80,16 +83,15 @@ function TripDetails() {
       setBudget(data.budget);
       setDays(data.days);
       setTravelStyle(data.travelStyle);
-      setAccommodation(data.accommodation);
-      setTransport(data.transport);
+      setAccommodationType(data.accommodationType);
+      setTransportType(data.transportType);
       setItinerary(data.itinerary);
     } catch (error) {
-      console.error(error);
+      console.error("Failed to load trip:", error);
     } finally {
       setLoading(false);
     }
   }
-
   async function handleSave() {
     if (!trip) return;
 
@@ -105,8 +107,8 @@ function TripDetails() {
         budget,
         days,
         travelStyle,
-        accommodation,
-        transport,
+        accommodationType,
+        transportType,
         itinerary,
       });
 
@@ -116,8 +118,8 @@ function TripDetails() {
         budget,
         days,
         travelStyle,
-        accommodation,
-        transport,
+        accommodationType,
+        transportType,
         itinerary,
       });
 
@@ -325,12 +327,16 @@ function TripDetails() {
 
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-                  <input
-                    value={budget}
-                    onChange={(e) => setBudget(e.target.value)}
-                    placeholder="Budget"
-                    className="rounded-xl bg-white p-3 text-slate-900"
-                  />
+                 <select
+  value={budget}
+  onChange={(e) =>
+    setBudget(e.target.value as "Low" | "Medium" | "High")
+  }
+>
+  <option value="Low">Low</option>
+  <option value="Medium">Medium</option>
+  <option value="High">High</option>
+</select>
 
                   <input
                     type="number"
@@ -352,9 +358,9 @@ function TripDetails() {
                   />
 
                   <input
-                    value={accommodation}
+                    value={accommodationType}
                     onChange={(e) =>
-                      setAccommodation(e.target.value)
+                      setAccommodationType(e.target.value)
                     }
                     placeholder="Accommodation"
                     className="rounded-xl bg-white p-3 text-slate-900"
@@ -363,9 +369,9 @@ function TripDetails() {
                 </div>
 
                 <input
-                  value={transport}
+                  value={transportType}
                   onChange={(e) =>
-                    setTransport(e.target.value)
+                    setTransportType(e.target.value)
                   }
                   placeholder="Transport"
                   className="w-full rounded-xl bg-white p-3 text-slate-900"
@@ -393,11 +399,11 @@ function TripDetails() {
                   </span>
 
                   <span className="rounded-full bg-white/20 px-4 py-2">
-                     {trip.accommodation}
+                     {trip.accommodationType}
                   </span>
 
                   <span className="rounded-full bg-white/20 px-4 py-2">
-                     {trip.transport}
+                     {trip.transportType}
                   </span>
 
                 </div>
@@ -430,13 +436,13 @@ function TripDetails() {
               }
               accommodation={
                 editing
-                  ? accommodation
-                  : trip.accommodation
+                  ? accommodationType
+                  : trip.accommodationType
               }
               transport={
                 editing
-                  ? transport
-                  : trip.transport
+                  ? transportType
+                  : trip.transportType
               }
               days={editing ? days : trip.days}
               itinerary={editing ? itinerary : trip.itinerary}
@@ -461,8 +467,8 @@ function TripDetails() {
                       setBudget(trip.budget);
                       setDays(trip.days);
                       setTravelStyle(trip.travelStyle);
-                      setAccommodation(trip.accommodation);
-                      setTransport(trip.transport);
+                      setAccommodationType(trip.accommodationType);
+                      setTransportType(trip.transportType);
                       setItinerary(trip.itinerary);
 
                       setEditing(false);
