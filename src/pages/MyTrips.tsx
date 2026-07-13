@@ -270,7 +270,8 @@ function MyTrips() {
 
           "Budget",
 
-          "Family"
+          "Family",
+          "Culture"
 
         ].map(
 

@@ -17,7 +17,7 @@ type Props = {
 
 function TripCard({ trip }: Props) {
   return (
-    <Link to={`/trip/${trip.id}`}>
+    <Link to={`/trips/${trip.id}`}>
 
       <article
         className="

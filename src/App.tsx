@@ -10,6 +10,7 @@ import MyTrips from "./pages/MyTrips";
 import TripDetails from "./pages/TripDetails";
 import SharedTrip from "./pages/SharedTrips";
 import Explore from "./pages/Explore";
+import Portfolio from "./pages/Portfolio/Portfolio";
 function App() {
   return (
 
@@ -71,6 +72,21 @@ function App() {
       />
       <Route
 
+        path="/portfolio"
+
+        element={
+
+          <ProtectedRoute>
+
+            <Portfolio/>
+
+          </ProtectedRoute>
+
+        }
+
+      />
+      <Route
+
         path="/trips"
 
         element={
@@ -107,7 +123,7 @@ element={<SharedTrip/>}
 path="/explore"
 element={<Explore/>}
 />
-<Route path="/portfolio" element={<MyTrips />} />
+
 
     </Routes>
 
