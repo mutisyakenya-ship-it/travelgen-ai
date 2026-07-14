@@ -11,6 +11,7 @@ import TripDetails from "./pages/TripDetails";
 import SharedTrip from "./pages/SharedTrips";
 import Explore from "./pages/Explore";
 import Portfolio from "./pages/Portfolio/Portfolio";
+import ProfilePage from "./pages/Profile/ProfilePage";
 function App() {
   return (
 
@@ -128,7 +129,14 @@ path="/explore"
 element={<Explore/>}
 />
 <Route path="*" element={<Landing />} />
-
+<Route
+  path="/profile"
+  element={
+    <ProtectedRoute>
+      <ProfilePage />
+    </ProtectedRoute>
+  }
+/>
     </Routes>
 
   );

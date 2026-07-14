@@ -1,7 +1,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { createUserProfile } from "../../services/firebase/user";
 import {
   register,
   googleLogin
@@ -49,6 +49,14 @@ function Register() {
         password
 
       );
+      await createUserProfile({
+  uid: userCredential.user.uid,
+  name,
+  email,
+  photoURL: "",
+  bio: "",
+  country: "",
+});
 
       console.log(
 
