@@ -410,12 +410,12 @@ function TripDetails() {
 
                 <div className="mt-6 flex gap-6 text-green-100">
 
-                  <span> {trip.likes}</span>
+                  <span> {trip.likes ?? 0}</span>
 
-                  <span> {trip.views}</span>
+                  <span> {trip.views ?? 0}</span>
 
                   <span>
-                    {trip.shareable ? " Public" : " Private"}
+                    {trip.shareable ?? false}
                   </span>
 
                 </div>
@@ -488,13 +488,13 @@ function TripDetails() {
               )}
 
               <FavoriteButton
-                favorite={trip.favorite}
+                favorite={trip.favorite ?? false}
                 onClick={handleFavorite}
               />
 
               <LikeButton
-                likes={trip.likes}
-                liked={trip.likedBy.includes(auth.currentUser?.uid ?? "")}
+                likes={trip.likes ?? 0}
+                liked={Boolean(trip.likedBy?.includes(auth.currentUser?.uid ?? ""))}
                 onClick={handleLike}
               />
 

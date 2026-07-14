@@ -41,7 +41,7 @@ function Navbar() {
 
           <li>
            <Link
-  to={ROUTES.PORTFOLIO}
+  to={ROUTES.LOGIN}
   className="text-slate-700 transition hover:text-green-700"
 >
   Portfolio
