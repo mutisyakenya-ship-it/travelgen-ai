@@ -3,22 +3,32 @@ import {
   signInWithPopup,
   signOut,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  updateProfile,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { auth } from "./firebase";
-import {sendPasswordResetEmail} from "firebase/auth";  
+
 const provider = new GoogleAuthProvider();
 
-export const register = (
+export const register = async (
+  name: string,
   email: string,
   password: string
 ) => {
-  return createUserWithEmailAndPassword(
-    auth,
-    email,
-    password
-  );
+  const userCredential =
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  await updateProfile(userCredential.user, {
+    displayName: name,
+  });
+
+  return userCredential;
 };
 
 export const login = (
@@ -33,14 +43,17 @@ export const login = (
 };
 
 export const googleLogin = () => {
-  return signInWithPopup(
+  return signInWithPopup(auth, provider);
+};
+
+export const resetPassword = (
+  email: string
+) => {
+  return sendPasswordResetEmail(
     auth,
-    provider
+    email
   );
 };
-export const resetPassword = (email: string) => {
-  return sendPasswordResetEmail(auth, email);
-}
 
 export const logout = () => {
   return signOut(auth);

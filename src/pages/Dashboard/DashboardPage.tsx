@@ -223,12 +223,11 @@ py-12
 >
 
 <WelcomeBanner
-
-userName="Ambrose"
-
+  userName={
+    auth.currentUser?.displayName ??
+    "Traveler"
+  }
 />
-
-
 <div
 
 className="

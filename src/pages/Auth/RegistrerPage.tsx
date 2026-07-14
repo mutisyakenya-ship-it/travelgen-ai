@@ -44,9 +44,8 @@ function Register() {
       setLoading(true);
 
       const userCredential = await register(
-
+        name,
         email,
-
         password
 
       );
