@@ -22,12 +22,12 @@ function ProfileStats({ trips }: Props) {
   }, [trips]);
 
   const cards = [
-    { title: "Trips created", value: stats.totalTrips, icon: Compass, accent: "from-emerald-500 to-teal-500" },
-    { title: "Destinations", value: stats.destinations, icon: MapPin, accent: "from-sky-500 to-indigo-500" },
-    { title: "Favorites", value: stats.favoriteTrips, icon: Heart, accent: "from-rose-500 to-orange-500" },
-    { title: "Shared trips", value: stats.sharedTrips, icon: Sparkles, accent: "from-violet-500 to-fuchsia-500" },
-    { title: "Likes", value: stats.totalLikes, icon: TrendingUp, accent: "from-amber-500 to-orange-500" },
-    { title: "Views", value: stats.totalViews, icon: TrendingUp, accent: "from-slate-700 to-slate-900" },
+    { title: "Trips created", value: stats.totalTrips, icon: Compass, accent: "from-emerald-500 to-teal-500", iconBg: "bg-emerald-50 text-emerald-600", glow: "shadow-emerald-100" },
+    { title: "Destinations", value: stats.destinations, icon: MapPin, accent: "from-sky-500 to-blue-600", iconBg: "bg-sky-50 text-sky-600", glow: "shadow-sky-100" },
+    { title: "Favorites", value: stats.favoriteTrips, icon: Heart, accent: "from-rose-500 to-pink-600", iconBg: "bg-rose-50 text-rose-600", glow: "shadow-rose-100" },
+    { title: "Shared trips", value: stats.sharedTrips, icon: Sparkles, accent: "from-violet-500 to-purple-600", iconBg: "bg-violet-50 text-violet-600", glow: "shadow-violet-100" },
+    { title: "Likes", value: stats.totalLikes, icon: TrendingUp, accent: "from-amber-500 to-orange-500", iconBg: "bg-amber-50 text-amber-600", glow: "shadow-amber-100" },
+    { title: "Views", value: stats.totalViews, icon: TrendingUp, accent: "from-indigo-500 to-violet-600", iconBg: "bg-indigo-50 text-indigo-600", glow: "shadow-indigo-100" },
   ];
 
   return (
@@ -49,14 +49,17 @@ function ProfileStats({ trips }: Props) {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25, delay: index * 0.04 }}
-              whileHover={{ y: -4, scale: 1.01 }}
-              className="rounded-[22px] border border-slate-200/80 bg-slate-50/70 p-5"
+              whileHover={{ y: -5, scale: 1.01, boxShadow: "0 16px 40px rgba(15, 23, 42, 0.08)" }}
+              className="rounded-[24px] border border-slate-200/80 bg-white/90 p-5 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-all duration-200"
             >
-              <div className={`inline-flex rounded-2xl bg-gradient-to-br ${card.accent} p-2.5 text-white shadow-sm`}>
-                <Icon size={18} />
+              <div className="flex items-start justify-between gap-3">
+                <div className={`inline-flex rounded-2xl ${card.iconBg} p-3 shadow-sm`}>
+                  <Icon size={22} strokeWidth={2.2} />
+                </div>
+                <div className={`h-10 w-10 rounded-full bg-gradient-to-br ${card.accent} opacity-15 blur-xl`} />
               </div>
-              <p className="mt-4 text-sm font-medium text-slate-500">{card.title}</p>
-              <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">{card.value}</p>
+              <p className="mt-5 text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">{card.title}</p>
+              <p className="mt-3 text-4xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-[2.2rem]">{card.value}</p>
             </motion.div>
           );
         })}
