@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { LogOut, ShieldCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 
@@ -26,31 +28,37 @@ function AccountActions() {
   }
 
   return (
-    <div className="rounded-3xl bg-white p-8 shadow-xl">
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.1 }}
+      className="rounded-[28px] border border-slate-200/80 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.05)] backdrop-blur sm:p-7"
+    >
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-slate-500">Security</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">Account actions</h2>
+        </div>
+      </div>
 
-      <h2 className="text-2xl font-bold">
-        Account
-      </h2>
-
-      <div className="mt-8 flex flex-col gap-4">
-
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <button
           onClick={handleResetPassword}
-          className="rounded-xl border border-green-700 px-6 py-3 font-semibold text-green-700 hover:bg-green-50"
+          className="inline-flex items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-700 transition hover:border-emerald-300 hover:bg-emerald-100"
         >
-          Reset Password
+          <ShieldCheck size={16} className="mr-2" />
+          Reset password
         </button>
 
         <button
           onClick={handleLogout}
-          className="rounded-xl bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700"
+          className="inline-flex items-center justify-center rounded-full bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700"
         >
+          <LogOut size={16} className="mr-2" />
           Logout
         </button>
-
       </div>
-
-    </div>
+    </motion.section>
   );
 }
 

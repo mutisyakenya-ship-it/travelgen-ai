@@ -12,11 +12,27 @@ import SharedTrip from "./pages/SharedTrips";
 import Explore from "./pages/Explore";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import Privacy from "./pages/Privacy/Privacy";
 function App() {
   return (
 
     <Routes>
+<Route
+  path="/about"
+  element={<About />}
+/>
 
+<Route
+  path="/contact"
+  element={<Contact />}
+/>
+
+<Route
+  path="/privacy"
+  element={<Privacy />}
+/>
       <Route
         path="/"
         element={<Landing />}

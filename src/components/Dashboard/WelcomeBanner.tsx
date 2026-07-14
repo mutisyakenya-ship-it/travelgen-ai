@@ -1,35 +1,58 @@
+import { motion } from "framer-motion";
+import { Compass, Sparkles } from "lucide-react";
+
 type Props = {
   userName?: string;
 };
 
-function WelcomeBanner({
-  userName = "Traveler",
-}: Props) {
+function WelcomeBanner({ userName = "Traveler" }: Props) {
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString("en", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  });
 
   return (
-
-    <section
-      className="rounded-3xl bg-gradient-to-r
-      from-green-700 to-emerald-600
-      p-8 text-white"
+    <motion.section
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45 }}
+      className="relative overflow-hidden rounded-[28px] border border-emerald-200/70 bg-[linear-gradient(135deg,_rgba(16,185,129,0.95)_0%,_rgba(6,78,59,0.96)_100%)] p-8 text-white shadow-[0_24px_70px_rgba(16,185,129,0.18)] sm:p-10"
     >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.24),_transparent_26%),radial-gradient(circle_at_bottom_left,_rgba(56,189,248,0.2),_transparent_24%)]" />
+      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-white/20" />
+      <div className="absolute bottom-[-2rem] left-[-1rem] h-36 w-36 rounded-full bg-white/10 blur-2xl" />
 
-      <h1 className="text-4xl font-bold">
+      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-2 text-sm font-medium backdrop-blur">
+            <Sparkles size={15} />
+            AI concierge ready
+          </div>
+          <h1 className="mt-5 text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+            Welcome back, {userName}
+          </h1>
+          <p className="mt-3 text-sm font-medium uppercase tracking-[0.28em] text-emerald-50/80 sm:text-[0.7rem]">
+            {formattedDate}
+          </p>
+          <p className="mt-4 max-w-xl text-base leading-7 text-emerald-50/90 sm:text-lg">
+            “The best journeys are the ones that feel effortless, personal, and beautifully planned.”
+          </p>
+        </div>
 
-        Welcome back, {userName} 
-
-      </h1>
-
-      <p className="mt-3 opacity-90">
-
-        Ready for your next adventure?
-
-      </p>
-
-    </section>
-
+        <div className="flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur">
+          <div className="rounded-xl bg-white/15 p-2">
+            <Compass size={18} />
+          </div>
+          <div>
+            <p className="text-sm font-semibold">Next trip, elevated</p>
+            <p className="text-xs text-emerald-50/80">Plan smarter with Gemini AI</p>
+          </div>
+        </div>
+      </div>
+    </motion.section>
   );
-
 }
 
 export default WelcomeBanner;

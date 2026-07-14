@@ -1,112 +1,39 @@
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 type Props = {
-
   title: string;
-
   value: string | number;
-
   icon?: ReactNode;
-
+  accent?: string;
 };
 
-function StatsCard({
-
-  title,
-
-  value,
-
-  icon
-
-}: Props) {
-
+function StatsCard({ title, value, icon, accent = "from-emerald-500 to-teal-500" }: Props) {
   return (
-
-    <div
-
-      className="
-      rounded-3xl
-      bg-white
-      p-6
-      shadow-md
-      border
-      border-slate-100
-      hover:shadow-xl
-      transition
-      "
-
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -4, scale: 1.01 }}
+      transition={{ duration: 0.25 }}
+      className="rounded-[24px] border border-slate-200/80 bg-white/80 p-5 shadow-[0_16px_45px_rgba(15,23,42,0.06)] backdrop-blur-sm"
     >
-
-      <div
-
-        className="
-        flex
-        items-center
-        justify-between
-        "
-
-      >
-
-        <h3
-
-          className="
-          text-sm
-          font-medium
-          uppercase
-          tracking-wide
-          text-slate-500
-          "
-
-        >
-
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
           {title}
-
         </h3>
-
-        {
-
-          icon && (
-
-            <div
-
-              className="
-              rounded-xl
-              bg-green-100
-              p-2
-              text-green-700
-              "
-
-            >
-
-              {icon}
-
-            </div>
-
-          )
-
-        }
-
+        {icon && (
+          <div className={`rounded-2xl bg-gradient-to-br ${accent} p-2.5 text-white shadow-sm`}>
+            {icon}
+          </div>
+        )}
       </div>
 
-      <p
-
-        className="
-        mt-4
-        text-4xl
-        font-bold
-        text-slate-900
-        "
-
-      >
-
+      <p className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
         {value}
-
       </p>
-
-    </div>
-
+      <p className="mt-2 text-sm text-slate-500">Tracked in your dashboard</p>
+    </motion.div>
   );
-
 }
 
 export default StatsCard;

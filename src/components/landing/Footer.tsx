@@ -1,94 +1,182 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
+    <footer className="bg-slate-900 text-slate-300">
+      <div className="mx-auto max-w-7xl px-6 py-14">
 
-    <footer className="bg-slate-900 py-12">
+        <div className="grid gap-10 md:grid-cols-4">
 
-      <div className="mx-auto max-w-7xl px-6">
-
-        <div className="grid gap-8 md:grid-cols-4">
-
+          {/* Brand */}
           <div>
-
-            <h3 className="text-xl font-bold text-white">
-
+            <h2 className="text-2xl font-bold text-white">
               TravelGen AI
+            </h2>
 
+            <p className="mt-4 text-sm leading-7 text-slate-400">
+              AI-powered travel planning built to help travelers discover,
+              organize and share unforgettable adventures across Kenya.
+            </p>
+          </div>
+
+          {/* Product */}
+          <div>
+            <h3 className="text-lg font-semibold text-white">
+              Product
             </h3>
 
-            <p className="mt-3 text-slate-400">
+            <ul className="mt-5 space-y-3">
 
-              Explore Kenya smarter with AI-powered travel planning.
+              <li>
+                <Link
+                  to="/planner"
+                  className="hover:text-green-400 transition"
+                >
+                  Planner
+                </Link>
+              </li>
 
-            </p>
+              <li>
+                <Link
+                  to="/portfolio"
+                  className="hover:text-green-400 transition"
+                >
+                  Portfolio
+                </Link>
+              </li>
 
-          </div>
-
-          <div>
-
-            <h4 className="font-semibold text-white">
-
-              Product
-
-            </h4>
-
-            <ul className="mt-4 space-y-2 text-slate-400">
-
-              <li>Planner</li>
-              <li>Portfolio</li>
-              <li>Destinations</li>
+              <li>
+                <Link
+                  to="/explore"
+                  className="hover:text-green-400 transition"
+                >
+                  Explore Trips
+                </Link>
+              </li>
 
             </ul>
-
           </div>
 
+          {/* Company */}
           <div>
-
-            <h4 className="font-semibold text-white">
-
+            <h3 className="text-lg font-semibold text-white">
               Company
+            </h3>
 
-            </h4>
+            <ul className="mt-5 space-y-3">
 
-            <ul className="mt-4 space-y-2 text-slate-400">
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-green-400 transition"
+                >
+                  About
+                </Link>
+              </li>
 
-              <li>About</li>
-              <li>Contact</li>
-              <li>Privacy</li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-green-400 transition"
+                >
+                  Contact
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/privacy"
+                  className="hover:text-green-400 transition"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
 
             </ul>
-
           </div>
 
+          {/* Social */}
           <div>
+            <h3 className="text-lg font-semibold text-white">
+              Connect
+            </h3>
 
-            <h4 className="font-semibold text-white">
+            <ul className="mt-5 space-y-3">
 
-              Follow Us
+              <li>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pink-400 transition"
+                >
+                  Instagram
+                </a>
+              </li>
 
-            </h4>
+              <li>
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-sky-400 transition"
+                >
+                  X (Twitter)
+                </a>
+              </li>
 
-            <ul className="mt-4 space-y-2 text-slate-400">
-
-              <li>Instagram</li>
-              <li>X</li>
-              <li>LinkedIn</li>
+              <li>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400 transition"
+                >
+                  LinkedIn
+                </a>
+              </li>
 
             </ul>
-
           </div>
 
         </div>
 
-        <div className="mt-10 border-t border-slate-700 pt-6 text-center text-slate-500">
+        {/* Bottom */}
+        <div className="mt-12 border-t border-slate-700 pt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
 
-          © 2026 TravelGen AI
+          <p className="text-sm text-slate-500">
+            © {new Date().getFullYear()} TravelGen AI. All rights reserved.
+          </p>
+
+          <div className="flex gap-6 text-sm">
+
+            <Link
+              to="/privacy"
+              className="hover:text-green-400 transition"
+            >
+              Privacy
+            </Link>
+
+            <Link
+              to="/contact"
+              className="hover:text-green-400 transition"
+            >
+              Contact
+            </Link>
+
+            <Link
+              to="/about"
+              className="hover:text-green-400 transition"
+            >
+              About
+            </Link>
+
+          </div>
 
         </div>
 
       </div>
-
     </footer>
-
   );
 }
 
