@@ -15,9 +15,11 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Privacy from "./pages/Privacy/Privacy";
+import ChatButton from "./components/chatbot/ChatButton";
+import ChatWidget from "./components/chatbot/ChatWidget";
 function App() {
   return (
-
+<>
     <Routes>
 <Route
   path="/about"
@@ -154,7 +156,9 @@ element={<Explore/>}
   }
 />
     </Routes>
-
+   <ChatButton/>
+   <ChatWidget/>
+   </>
   );
 }
 

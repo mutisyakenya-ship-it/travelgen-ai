@@ -95,7 +95,8 @@ function Hero() {
                   <Star size={15} fill="currentColor" />
                   <Star size={15} fill="currentColor" />
                 </div>
-                4.9/5 rating
+                4.9/5 rating+
+                ++++
               </div>
               {highlights.map((item) => (
                 <div key={item} className="inline-flex items-center gap-2 rounded-full bg-slate-900/5 px-3.5 py-2 text-sm font-medium text-slate-600">

@@ -49,6 +49,8 @@ Preferred Transport:
 ${transport}
 
 For EACH day include:
+- attractions
+- weather 
 
 - estimatedCost
 - hotel
