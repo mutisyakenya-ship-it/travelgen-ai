@@ -1,8 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({
-  apiKey: import.meta.env.VITE_GEMINI_API_KEY,
-});
+import { getGeminiClient } from "./geminiClient";
 
 const SYSTEM_PROMPT = `
 You are TravelGen AI.
@@ -31,15 +27,13 @@ export async function askTravelAssistant(
   question: string
 ): Promise<string> {
 
+  const ai = await getGeminiClient();
+
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: `${SYSTEM_PROMPT}
-
-User:
-${question}`,
+    contents: `${SYSTEM_PROMPT}\n\nUser:\n${question}`,
   });
 
   const text = response.text ?? "";
-
   return text;
 }

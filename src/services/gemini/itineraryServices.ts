@@ -1,23 +1,6 @@
-import {
-
-GoogleGenAI
-
-}
-
-from "@google/genai";
-
-const ai=
-
-new GoogleGenAI({
-
-apiKey:
-
-import.meta.env
-
-.VITE_GEMINI_API_KEY
-
-});
+import { getGeminiClient } from "./geminiClient";
 import type { Day } from "../../types/itinerary";
+
 export async function generateItinerary(
   destination: string,
   budget: string,
@@ -25,10 +8,11 @@ export async function generateItinerary(
   travelStyle: string,
   accommodation: string,
   transport: string
-): Promise<Day[]>{
+): Promise<Day[]> {
 
-const prompt = `
+  const ai = await getGeminiClient();
 
+  const prompt = `
 You are an expert travel planner.
 
 Generate a realistic ${days}-day itinerary.
@@ -51,7 +35,6 @@ ${transport}
 For EACH day include:
 - attractions
 - weather 
-
 - estimatedCost
 - hotel
 - airbnb
@@ -71,16 +54,8 @@ Format:
       "estimatedCost":"",
       "hotel":"",
       "airbnb":"",
-      "restaurants":[
-        "",
-        "",
-        ""
-      ],
-      "attractions":[
-        "",
-        "",
-        ""
-      ],
+      "restaurants":["","",""],
+      "attractions":["","",""],
       "tips":"",
       "activities":[
         {
@@ -98,42 +73,21 @@ Do not use markdown.
 Do not explain.
 
 Return JSON only.
-
 `;
-const response=
 
-await ai.models.generateContent({
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash",
+    contents: prompt,
+  });
 
-model:"gemini-2.5-flash",
+  const text = response.text ?? "";
 
-contents:prompt
+  const cleaned = text
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
 
-});
+  const parsed = JSON.parse(cleaned);
 
-const text=
-
-response.text??
-
-"";
-
-const cleaned=
-
-text
-
-.replace(/```json/g,"")
-
-.replace(/```/g,"")
-
-.trim();
-
-const parsed=
-
-JSON.parse(
-
-cleaned
-
-);
-
-return parsed.days;
-
+  return parsed.days;
 }
