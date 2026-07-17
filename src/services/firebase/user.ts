@@ -6,7 +6,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-import { db } from "./firebase";
+import { db } from "./firestore";
 
 export interface UserProfile {
   uid: string;

@@ -4,7 +4,7 @@ import { updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
 import { auth } from "../../services/firebase/firebase";
-import { db } from "../../services/firebase/firebase";
+import { db } from "../../services/firebase/firestore";
 
 function ProfileForm() {
   const user = auth.currentUser;

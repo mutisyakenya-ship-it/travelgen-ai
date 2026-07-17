@@ -1,11 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
-
 import { auth } from "../services/firebase/firebase";
-
 import {
   getTrip,
   updateTrip,
@@ -238,32 +233,27 @@ function TripDetails() {
   }
 
   async function handleExport() {
-    if (!itineraryRef.current) return;
+  if (!itineraryRef.current) return;
 
-    const canvas = await html2canvas(itineraryRef.current);
+  const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+    import("html2canvas"),
+    import("jspdf"),
+  ]);
 
-    const image = canvas.toDataURL("image/png");
+  const canvas = await html2canvas(itineraryRef.current);
 
-    const pdf = new jsPDF("p", "mm", "a4");
+  const image = canvas.toDataURL("image/png");
 
-    const width = 210;
+  const pdf = new jsPDF("p", "mm", "a4");
 
-    const height =
-      (canvas.height * width) /
-      canvas.width;
+  const width = 210;
 
-    pdf.addImage(
-      image,
-      "PNG",
-      0,
-      0,
-      width,
-      height
-    );
+  const height = (canvas.height * width) / canvas.width;
 
-    pdf.save(`${trip?.destination}.pdf`);
-  }
-    if (loading) {
+  pdf.addImage(image, "PNG", 0, 0, width, height);
+
+  pdf.save(`${trip?.destination}.pdf`);
+}  if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50">
         <div className="text-center">
