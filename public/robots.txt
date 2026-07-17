@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://travelgen-ai-ochre.vercel.app/sitemap.xml
