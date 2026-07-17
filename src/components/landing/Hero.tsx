@@ -12,33 +12,38 @@ const stats = [
 ];
 
 const highlights = ["AI-powered planning", "Luxury stays", "Local experiences"];
+const fadeUp = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+};
 
+const transition = {
+  duration: 0.6,
+};
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.14),_transparent_32%),radial-gradient(circle_at_90%_10%,_rgba(56,189,248,0.16),_transparent_24%),linear-gradient(135deg,_#f8fffc_0%,_#fefefe_45%,_#f5f7ff_100%)]">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-[-10%] top-[-8%] h-72 w-72 rounded-full bg-emerald-300/30 blur-3xl" />
-        <div className="absolute right-[-5%] top-[12%] h-80 w-80 rounded-full bg-sky-300/20 blur-3xl" />
-        <div className="absolute bottom-0 left-[20%] h-64 w-64 rounded-full bg-violet-300/20 blur-3xl" />
+        <div className="absolute left-[-10%] top-[-8%] h-72 w-72 rounded-full bg-emerald-300/30 blur-2xl" />
+        <div className="absolute right-[-5%] top-[12%] h-80 w-80 rounded-full bg-sky-300/20 blur-2xl" />
+
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-col px-6 py-20 sm:px-8 lg:px-10 lg:py-24 xl:px-12">
         <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
           <div className="max-w-2xl">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-200/80 bg-white/80 px-4 py-2 text-sm font-semibold text-emerald-700 shadow-[0_10px_30px_rgba(16,185,129,0.12)] backdrop-blur"
+             {...fadeUp}
+                    transition={transition}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-200/80 bg-white/80 px-4 py-2 text-sm font-semibold text-emerald-700 shadow-md] backdrop-blur"
             >
               <Sparkles size={16} className="text-emerald-500" />
               Powered by Gemini AI
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.05 }}
+             {...fadeUp}
+               transition={transition}
               className="text-4xl font-semibold leading-[0.95] tracking-[-0.03em] text-slate-950 sm:text-5xl lg:text-6xl lg:leading-[0.95]"
             >
               Plan unforgettable journeys across
@@ -48,19 +53,16 @@ function Hero() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.12 }}
+             {...fadeUp}
+              transition={transition}
               className="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl"
             >
               Let Gemini AI design complete travel experiences with personalized itineraries, attractions, accommodation, transport recommendations, and budget estimates in seconds.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.18 }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              {...fadeUp}
+             transition={transition}className="mt-8 flex flex-wrap items-center gap-3"
             >
               <Link
                 to="/planner"
@@ -80,18 +82,16 @@ function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.24 }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              {...fadeUp}
+                    transition={transition}className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm backdrop-blur">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm ">
                 <div className="flex items-center gap-1 text-amber-500">
-                  <Star size={15} fill="currentColor" />
-                  <Star size={15} fill="currentColor" />
-                  <Star size={15} fill="currentColor" />
-                  <Star size={15} fill="currentColor" />
-                  <Star size={15} fill="currentColor" />
+            <Star size={15} fill="currentColor" />
+            <Star size={15} fill="currentColor" />
+             <Star size={15} fill="currentColor" />
+           <Star size={15} fill="currentColor" />
+             <Star size={15} fill="currentColor" />
                 </div>
                 4.9/5 rating+
                 ++++
@@ -105,13 +105,11 @@ function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.28 }}
-              className="mt-10 grid gap-3 sm:grid-cols-3"
+             {...fadeUp}
+                 transition={transition} className="mt-10 grid gap-3 sm:grid-cols-3"
             >
               {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-slate-200/70 bg-white/80 p-4 shadow-[0_14px_40px_rgba(15,23,42,0.06)] backdrop-blur">
+                <div key={stat.label} className="rounded-2xl border border-slate-200/70 bg-white/80 p-4 shadow-[0_14px_40px_rgba(15,23,42,0.06)]">
                   <p className="text-2xl font-semibold tracking-tight text-emerald-600">{stat.value}</p>
                   <p className="mt-1 text-sm uppercase tracking-[0.2em] text-slate-500">{stat.label}</p>
                 </div>
@@ -121,16 +119,16 @@ function Hero() {
 
           <div className="relative mx-auto w-full max-w-[560px]">
             <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-emerald-400/20 via-sky-300/20 to-violet-300/25 blur-3xl"
+             {...fadeUp}
+             transition={transition} className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-emerald-400/20 via-sky-300/20 to-violet-300/25 blur-3xl"
             />
-            <div className="relative rounded-[36px] border border-white/70 bg-white/70 p-3 shadow-[0_40px_120px_rgba(15,23,42,0.16)] backdrop-blur-xl">
+            <div className="relative rounded-[36px] border border-white/70 bg-white/70 p-3 shadow-[0_40px_120px_rgba(15,23,42,0.16)] backdrop-blur-md">
               <img
   src="/hero.jpg"
   alt="Kenya travel destination"
   fetchPriority="high"
+  loading="eager"
+  decoding="async"
   width={560}
   height={580}
   className="h-[520px] w-full rounded-[28px] object-cover object-center sm:h-[580px]"
@@ -154,9 +152,9 @@ function Hero() {
             </div>
 
             <motion.div
-              animate={{ y: [0, -12, 0], rotate: [-8, -6, -8] }}
+              animate={{ y: [0, -10, 0],}}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-2 top-8 z-20 w-40 rounded-[22px] border border-white/70 bg-white/85 p-2 shadow-[0_20px_50px_rgba(15,23,42,0.14)] backdrop-blur-md sm:-left-6 sm:top-10 sm:w-44"
+              className="... rotate-[-8deg]"
             >
               <img src={safari} alt="Safari experience" className="h-24 w-full rounded-[16px] object-cover" />
               <div className="mt-2 flex items-center justify-between gap-2">
@@ -170,13 +168,11 @@ function Hero() {
               </div>
             </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 14, 0], rotate: [6, 8, 6] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-2 top-28 z-20 w-44 rounded-[22px] border border-white/70 bg-white/85 p-2 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-md sm:-right-4 sm:top-24 sm:w-48"
+            <div
+              className="absolute ... rotate -[8deg]"
             >
               <img src={hotel} alt="Luxury hotel stay" className="h-28 w-full rounded-[16px] object-cover" />
-              <div className="mt-2 flex items-center justify-between gap-2">
+              <div className="mt-2 flex items-center justify-between gap-2 rotate-[8deg]">
                 <div>
                   <p className="text-sm font-semibold text-slate-900">Luxury stay</p>
                   <p className="text-[11px] text-slate-500">Nairobi hotels</p>
@@ -185,30 +181,26 @@ function Hero() {
                   <ShieldCheck size={14} />
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              animate={{ y: [0, -10, 0], rotate: [8, 10, 8] }}
-              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-24 left-[-0.5rem] z-20 w-36 rounded-[20px] border border-white/70 bg-white/85 p-2 shadow-[0_20px_50px_rgba(15,23,42,0.14)] backdrop-blur-md sm:-bottom-28 sm:left-[-1rem] sm:w-40"
+            <div
+              className="absolute -bottom-24 rotate-[8deg] left-[-0.5rem] z-20 w-36 rounded-[20px] border border-white/70 bg-white/85 p-2 shadow-[0_20px_50px_rgba(15,23,42,0.14)]  sm:-bottom-28 sm:left-[-1rem] sm:w-40"
             >
               <img src={food} alt="Local cuisine" className="h-20 w-full rounded-[14px] object-cover" />
               <div className="mt-2">
                 <p className="text-sm font-semibold text-slate-900">Local cuisine</p>
                 <p className="text-[11px] text-slate-500">Kenyan delicacies</p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
 
         <div className="mt-14 flex justify-center">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          <div
             className="rounded-full border border-slate-200 bg-white/80 p-3 text-slate-500 shadow-sm backdrop-blur"
           >
             ↓
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
