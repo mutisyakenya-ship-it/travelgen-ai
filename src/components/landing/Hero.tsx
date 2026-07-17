@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Compass, MapPin, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-
-import heroImage from "../../assets/images/hero.jpg";
 import safari from "../../assets/images/safari.jpg";
 import hotel from "../../assets/images/hotel.jpg";
 import food from "../../assets/images/food.jpg";
@@ -130,11 +128,13 @@ function Hero() {
             />
             <div className="relative rounded-[36px] border border-white/70 bg-white/70 p-3 shadow-[0_40px_120px_rgba(15,23,42,0.16)] backdrop-blur-xl">
               <img
-                src={heroImage}
-                alt="Kenya travel destination"
-                className="h-[520px] w-full rounded-[28px] object-cover object-center sm:h-[580px]"
-              />
-
+  src="/hero.jpg"
+  alt="Kenya travel destination"
+  fetchPriority="high"
+  width={560}
+  height={580}
+  className="h-[520px] w-full rounded-[28px] object-cover object-center sm:h-[580px]"
+/>
               <div className="absolute inset-x-6 bottom-6 rounded-[24px] border border-white/70 bg-slate-950/85 p-4 text-white shadow-2xl backdrop-blur-md sm:inset-x-8 sm:bottom-8 sm:p-5">
                 <div className="flex items-center justify-between gap-3">
                   <div>
