@@ -150,7 +150,7 @@ function Hero() {
               </div>
             </div>
 
-           <div className="animate-float-safari absolute ... rotate-[-8deg]">
+          <div className="animate-float-safari absolute -left-2 top-8 z-20 w-40 rounded-[22px] border border-white/70 bg-white/85 p-2 shadow-[0_20px_50px_rgba(15,23,42,0.14)] backdrop-blur-md sm:-left-6 sm:top-10 sm:w-44 rotate-[-8deg]">
   <img src={safari} alt="Safari experience" className="h-24 w-full rounded-[16px] object-cover" />
   <div className="mt-2 flex items-center justify-between gap-2">
     <div>
@@ -162,21 +162,18 @@ function Hero() {
     </div>
   </div>
 </div>
-            <div
-              className="absolute ... rotate -[8deg]"
-            >
-              <img src={hotel} alt="Luxury hotel stay" className="h-28 w-full rounded-[16px] object-cover" />
-              <div className="mt-2 flex items-center justify-between gap-2 rotate-[8deg]">
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Luxury stay</p>
-                  <p className="text-[11px] text-slate-500">Nairobi hotels</p>
-                </div>
-                <div className="rounded-full bg-sky-100 p-1.5 text-sky-600">
-                  <ShieldCheck size={14} />
-                </div>
-              </div>
-            </div>
-
+            <div className="absolute -right-2 top-28 z-20 w-44 rounded-[22px] border border-white/70 bg-white/85 p-2 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-md sm:-right-4 sm:top-24 sm:w-48 rotate-[8deg]">
+  <img src={hotel} alt="Luxury hotel stay" className="h-28 w-full rounded-[16px] object-cover" />
+  <div className="mt-2 flex items-center justify-between gap-2 rotate-[8deg]">
+    <div>
+      <p className="text-sm font-semibold text-slate-900">Luxury stay</p>
+      <p className="text-[11px] text-slate-500">Nairobi hotels</p>
+    </div>
+    <div className="rounded-full bg-sky-100 p-1.5 text-sky-600">
+      <ShieldCheck size={14} />
+    </div>
+  </div>
+</div>
             <div
               className="absolute -bottom-24 rotate-[8deg] left-[-0.5rem] z-20 w-36 rounded-[20px] border border-white/70 bg-white/85 p-2 shadow-[0_20px_50px_rgba(15,23,42,0.14)]  sm:-bottom-28 sm:left-[-1rem] sm:w-40"
             >
