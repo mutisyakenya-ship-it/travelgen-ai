@@ -40,24 +40,15 @@ function Hero() {
               Powered by Gemini AI
             </motion.div>
 
-            <motion.h1
-             {...fadeUp}
-               transition={transition}
-              className="text-4xl font-semibold leading-[0.95] tracking-[-0.03em] text-slate-950 sm:text-5xl lg:text-6xl lg:leading-[0.95]"
-            >
-              Plan unforgettable journeys across
-              <span className="mt-3 block bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600 bg-clip-text text-transparent">
-                AI-powered travel planning
-              </span>
-            </motion.h1>
-
-            <motion.p
-             {...fadeUp}
-              transition={transition}
-              className="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl"
-            >
-              Let Gemini AI design complete travel experiences with personalized itineraries, attractions, accommodation, transport recommendations, and budget estimates in seconds.
-            </motion.p>
+            <h1 className="text-4xl font-semibold leading-[0.95] tracking-[-0.03em] text-slate-950 sm:text-5xl lg:text-6xl lg:leading-[0.95]">
+  Plan unforgettable journeys across
+  <span className="mt-3 block bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600 bg-clip-text text-transparent">
+    AI-powered travel planning
+  </span>
+</h1>
+<p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl">
+  Let Gemini AI design complete travel experiences with personalized itineraries, attractions, accommodation, transport recommendations, and budget estimates in seconds.
+</p>
 
             <motion.div
               {...fadeUp}
