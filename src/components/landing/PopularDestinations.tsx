@@ -1,9 +1,9 @@
-import Naivasha from "../../assets/images/Naivasha.jpg";
-import hero from "../../assets/images/hero.jpg";
-import Mara from "../../assets/images/Mara.jpg";
-import nairobi from "../../assets/images/nairobi.jpg";
-import mombasa from "../../assets/images/mombasa.jpg";
-
+const cloud = "https://res.cloudinary.com/dxemxzh3/image/upload/w_434,h_576,c_fill,q_auto,f_auto";
+const Naivasha = `${cloud}/Naivasha`;
+const hero = `${cloud}/hero`;
+const Mara = `${cloud}/Mara`;
+const nairobi = `${cloud}/nairobi`;
+const mombasa = `${cloud}/mombasa`;
 const destinations = [
 
 {

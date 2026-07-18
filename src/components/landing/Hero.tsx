@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Compass, MapPin, ShieldCheck, Sparkles, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-import safari from "../../assets/images/safari.jpg";
-import hotel from "../../assets/images/hotel.jpg";
-import food from "../../assets/images/food.jpg";
-
+const safari = "https://res.cloudinary.com/dxemxzh3/image/upload/w_360,h_190,c_fill,q_auto,f_auto/safari";
+const hotel = "https://res.cloudinary.com/dxemxzh3/image/upload/w_384,h_224,c_fill,q_auto,f_auto/hotel";
+const food = "https://res.cloudinary.com/dxemxzh3/image/upload/w_320,h_160,c_fill,q_auto,f_auto/food";
 const stats = [
   { value: "50+", label: "destinations" },
   { value: "1000+", label: "itineraries" },
