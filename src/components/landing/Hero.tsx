@@ -151,23 +151,18 @@ function Hero() {
               </div>
             </div>
 
-            <motion.div
-              animate={{ y: [0, -10, 0],}}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-              className="... rotate-[-8deg]"
-            >
-              <img src={safari} alt="Safari experience" className="h-24 w-full rounded-[16px] object-cover" />
-              <div className="mt-2 flex items-center justify-between gap-2">
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">Maasai Mara</p>
-                  <p className="text-[11px] text-slate-500">Wildlife safari</p>
-                </div>
-                <div className="rounded-full bg-emerald-100 p-1.5 text-emerald-600">
-                  <MapPin size={14} />
-                </div>
-              </div>
-            </motion.div>
-
+           <div className="animate-float-safari absolute ... rotate-[-8deg]">
+  <img src={safari} alt="Safari experience" className="h-24 w-full rounded-[16px] object-cover" />
+  <div className="mt-2 flex items-center justify-between gap-2">
+    <div>
+      <p className="text-sm font-semibold text-slate-900">Maasai Mara</p>
+      <p className="text-[11px] text-slate-500">Wildlife safari</p>
+    </div>
+    <div className="rounded-full bg-emerald-100 p-1.5 text-emerald-600">
+      <MapPin size={14} />
+    </div>
+  </div>
+</div>
             <div
               className="absolute ... rotate -[8deg]"
             >

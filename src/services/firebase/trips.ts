@@ -49,37 +49,29 @@ export async function saveTrip(
     }
   );
 }
-
 export async function getTrips(uid: string): Promise<Trip[]> {
   const q = query(
     collection(db, "users", uid, "trips"),
     orderBy("createdAt", "desc")
   );
-
   const snapshot = await getDocs(q);
-
   return snapshot.docs.map((doc) => ({
     id: doc.id,
     ...(doc.data() as Omit<Trip, "id">),
   }));
 }
-
 export async function getTrip(
   uid: string,
   tripId: string
 ): Promise<Trip | null > {
   const ref = doc(db, "users", uid, "trips", tripId);
-
   const snapshot = await getDoc(ref);
-
   if (!snapshot.exists()) return null;
-
   return {
     id: snapshot.id,
     ...(snapshot.data() as Omit<Trip, "id">),
   };
 }
-
 export async function updateTrip(
   uid: string,
   tripId: string,
@@ -90,7 +82,6 @@ export async function updateTrip(
     tripData
   );
 }
-
 export async function deleteTrip(
   uid: string,
   tripId: string
@@ -111,7 +102,6 @@ export async function toggleFavorite(
     }
   );
 }
-
 export async function makeTripShareable(
   uid: string,
   tripId: string
@@ -211,7 +201,6 @@ export async function getSharedTrip(
     ...(trip.data() as Omit<Trip, "id">),
   };
 }
-
 export async function addComment(
   ownerId: string,
   tripId: string,
@@ -236,7 +225,6 @@ export async function addComment(
     }
   );
 }
-
 export async function removeComment(
   ownerId: string,
   tripId: string,
@@ -254,7 +242,6 @@ export async function removeComment(
     )
   );
 }
-
 export function subscribeComments(
   ownerId: string,
   tripId: string,
@@ -271,7 +258,6 @@ export function subscribeComments(
     ),
     orderBy("createdAt", "desc")
   );
-
   return onSnapshot(q, (snapshot) => {
     const comments: TripComment[] = snapshot.docs.map((doc) => ({
       id: doc.id,

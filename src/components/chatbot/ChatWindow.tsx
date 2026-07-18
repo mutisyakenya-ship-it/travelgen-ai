@@ -23,7 +23,7 @@ function ChatWindow({
       id: crypto.randomUUID(),
       role: "assistant",
       content:
-        " Hello! I'm TravelGen AI. I can help you plan trips, recommend destinations, hotels, transport, budgets and answer any travel questions.",
+        " Hello,I'm TravelGen AI. I can help you plan trips, recommend destinations, hotels, transport, budgets and answer any travel related questions.",
       createdAt: new Date(),
     },
   ]);
@@ -101,7 +101,7 @@ function ChatWindow({
           id: crypto.randomUUID(),
           role: "assistant",
           content:
-            "⚠️ Sorry, something went wrong. Please try again.",
+            " Ooh Sorry, something went wrong. Please try again.",
           createdAt: new Date(),
         },
       ]);
@@ -135,7 +135,7 @@ function ChatWindow({
       "
     >
 
-      {/* Header */}
+      //header
 
       <div
         className="
@@ -161,7 +161,7 @@ function ChatWindow({
 
           <p className="text-sm text-green-100">
 
-            Your Personal Travel Assistant
+            Your Personal Travelgen assistant
 
           </p>
 
@@ -186,7 +186,7 @@ function ChatWindow({
 
       </div>
 
-      {/* Messages */}
+      //messages
 
       <div
         className="
@@ -215,7 +215,7 @@ function ChatWindow({
 
       </div>
 
-      {/* Input */}
+    // imputs
 
       <ChatInput
 
