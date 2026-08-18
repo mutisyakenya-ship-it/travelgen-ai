@@ -1,78 +1,307 @@
 import { getGeminiClient } from "./geminiClient";
-import type { Day } from "../../types/itinerary";
-
+import type { Budget, Itinerary } from "../../types/itinerary";
+import { itinerarySchema } from "../../schema/itinerarySchema";
 export async function generateItinerary(
   destination: string,
-  budget: string,
+  budget: Budget,
   days: number,
   travelStyle: string,
   accommodation: string,
   transport: string
-): Promise<Day[]> {
-
+): Promise<Itinerary> {
   const ai = await getGeminiClient();
 
   const prompt = `
-You are an expert travel planner.
+You are a professional travel planning engine specializing in travel within Kenya.
 
-Generate a realistic ${days}-day itinerary.
+Your task is to generate a realistic, useful and personalized ${days}-day travel itinerary.
 
-Destination:
-${destination}
+TRAVELER INFORMATION
+--------------------
+Destination: ${destination}
+Budget Level: ${budget}
+Trip Duration: ${days} days
+Travel Style: ${travelStyle}
+Preferred Accommodation: ${accommodation}
+Preferred Transport: ${transport}
 
-Budget:
-${budget}
+IMPORTANT REQUIREMENTS
+----------------------
 
-Travel Style:
-${travelStyle}
+1. DESTINATION OVERVIEW
 
-Preferred Accommodation:
-${accommodation}
+Provide a concise overview of the destination.
 
-Preferred Transport:
-${transport}
+Explain:
+- What the traveler should expect to experience.
+- The general atmosphere of the destination.
+- Major characteristics of the area.
+- Important practical considerations.
 
-For EACH day include:
-- attractions
-- weather 
+2. WEATHER
+
+Provide general expected weather conditions for the destination.
+
+Include:
+- Typical condition.
+- Expected temperature range.
+- Practical weather advice.
+
+IMPORTANT:
+Do NOT claim to provide a live weather forecast.
+Weather information must be presented as general/typical expectations.
+
+3. LOCAL FOOD
+
+Recommend authentic or popular local foods that travelers should try.
+
+Prioritize foods that are relevant to the destination.
+
+4. PLACES TO HANG OUT
+
+Recommend interesting places where travelers can relax, socialize or enjoy the evening.
+
+5. TRAVEL TIPS
+
+Provide practical advice about:
+- Safety
+- Transport
+- Money
+- Local etiquette
+- Important things to know
+
+6. DAILY ITINERARY
+
+Create exactly ${days} days.
+
+Each day should contain:
+
+- Day number
+- Day title
+- Weather expectations
+- Hotel recommendation
+- Airbnb recommendation
+- Three restaurant recommendations
+- Three attraction recommendations
+- Practical tips
+- Activities
+- Meal recommendations
+- Transportation
+- Detailed daily cost breakdown
+
+7. ACTIVITIES
+
+Each activity must contain:
+
+- title
+- description
+- icon
 - estimatedCost
-- hotel
-- airbnb
-- restaurants (3 recommendations)
-- attractions (3 recommendations)
-- tips
+
+The estimated cost must be a NUMBER representing Kenyan Shillings.
+
+8. MEALS
+
+Provide breakfast, lunch and dinner recommendations where appropriate.
+
+Each meal must contain:
+
+- type
+- restaurant
+- foodToTry
+- estimatedCost
+
+Costs must be numbers in Kenyan Shillings.
+
+9. TRANSPORT
+
+Provide the recommended transport method for the day.
+
+Include:
+
+- method
+- description
+- estimatedCost
+
+10. DAILY COST
+
+For every day provide:
+
+- accommodation
+- transport
+- food
 - activities
+- miscellaneous
+- total
+
+All values must be numbers in Kenyan Shillings.
+
+11. TOTAL TRIP COST
+
+Provide a complete trip cost summary.
+
+Include:
+
+- accommodation
+- transport
+- food
+- activities
+- miscellaneous
+- total
+- currency
+
+The total should represent the estimated cost for the entire trip.
+
+IMPORTANT COST RULES
+--------------------
+
+- All monetary values must be numeric.
+- Do not include "KES" inside numeric values.
+- Use realistic approximate prices for Kenya.
+- Costs are estimates, not guaranteed prices.
+- Do not invent obviously unrealistic prices.
+- Make the budget level affect the recommendations and estimated costs.
+
+BUDGET BEHAVIOR
+---------------
+
+LOW:
+Prioritize affordable accommodation, local restaurants, public transport and low-cost activities.
+
+MEDIUM:
+Balance comfort and affordability.
+
+HIGH:
+Allow higher-quality accommodation, private transport, premium restaurants and more expensive experiences.
+
+OUTPUT REQUIREMENTS
+--------------------
 
 Return ONLY valid JSON.
 
-Format:
+Do not use Markdown.
+
+Do not wrap the JSON in triple backticks.
+
+Do not add explanations before or after the JSON.
+
+The JSON must follow EXACTLY this structure:
 
 {
-  "days":[
+  "overview": {
+    "summary": "",
+    "whatToExpect": [],
+    "localFoods": [],
+    "placesToHangOut": [],
+    "travelTips": []
+    "localCulture": []
+  },
+
+  "weather": {
+    "condition": "",
+    "temperature": "",
+    "humidity": "",
+    "windSpeed": "",
+    "precipitation": "",
+    "advice": ""
+
+  },
+
+  "days": [
     {
-      "day":1,
-      "estimatedCost":"",
-      "hotel":"",
-      "airbnb":"",
-      "restaurants":["","",""],
-      "attractions":["","",""],
-      "tips":"",
-      "activities":[
+      "day": 1,
+      "title": "",
+
+      "weather": {
+        "condition": "",
+        "temperature": "",
+        "humidity": "",
+        "windSpeed": "",
+        "precipitation": "",
+        "advice": ""
+      },
+
+      "hotel": "",
+
+      "airbnb": "",
+
+      "restaurants": [
+        "",
+        "",
+        ""
+      ],
+
+      "attractions": [
+        "",
+        "",
+        ""
+      ],
+
+      "tips": "",
+
+      "activities": [
         {
-          "title":"",
-          "description":"",
-          "icon":""
+          "title": "",
+          "description": "",
+          "icon": "",
+          "estimatedCost": 0
         }
-      ]
+      ],
+
+      "meals": [
+        {
+          "type": "Breakfast",
+          "name": "",
+          "description": "",
+          "restaurant": "",
+          "foodToTry": "",
+          "estimatedCost": 0
+        },
+        {
+          "type": "Lunch",
+          "name": "",
+          "description": "",
+          "restaurant": "",
+          "foodToTry": "",
+          "estimatedCost": 0
+        },
+        {
+          "type": "Dinner",
+          "name": "",
+          "description": "",
+          "restaurant": "",
+          "foodToTry": "",
+          "estimatedCost": 0
+        }
+      ],
+
+      "transport": {
+        "method": "",
+        "description": "",
+        "estimatedCost": 0
+      },
+      "estimatedCost": 0,
+      "cost": {
+        "accommodation": 0,
+        "transport": 0,
+        "food": 0,
+        "activities": 0,
+        "miscellaneous": 0,
+        "total": 0
+      }
     }
-  ]
+  ],
+
+  "costSummary": {
+    "accommodation": 0,
+    "transport": 0,
+    "food": 0,
+    "activities": 0,
+    "miscellaneous": 0,
+    "total": 0,
+    "currency": "KES"
+  }
 }
-
-Do not use markdown.
-
-Do not explain.
-
-Return JSON only.
 `;
 
   const response = await ai.models.generateContent({
@@ -80,14 +309,36 @@ Return JSON only.
     contents: prompt,
   });
 
-  const text = response.text ?? "";
+  const text = response.text?.trim();
+
+  if (!text) {
+    throw new Error("Gemini returned an empty response.");
+  }
 
   const cleaned = text
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
+    .replace(/^```json\s*/i, "")
+    .replace(/^```\s*/i, "")
+    .replace(/\s*```$/i, "")
     .trim();
 
-  const parsed = JSON.parse(cleaned);
+  try {
+  const parsed: unknown = JSON.parse(cleaned);
 
-  return parsed.days;
+  const result = itinerarySchema.safeParse(parsed);
+
+  if (!result.success) {
+    console.error("Itinerary validation failed:", result.error.issues);
+
+    throw new Error("Invalid itinerary structure returned by Gemini.");
+  }
+
+  return result.data;
+} catch (error) {
+  console.error("Gemini JSON parsing or validation error:", error);
+  console.error("Gemini response:", text);
+
+  throw new Error(
+    "The AI generated an invalid itinerary. Please try again."
+  );
+}
 }

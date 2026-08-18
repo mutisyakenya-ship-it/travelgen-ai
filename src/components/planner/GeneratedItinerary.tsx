@@ -2,7 +2,7 @@ import DayCard from "../itinerary/DayCard";
 import Timeline from "../itinerary/TimeLine";
 import TripHero from "./TripHero";
 
-import type { Day } from "../../types/itinerary";
+import type { Itinerary } from "../../types/itinerary";
 
 type Props = {
   destination: string;
@@ -11,7 +11,7 @@ type Props = {
   accommodationType: string;
   transportType: string;
   days: number;
-  itinerary: Day[];
+  itinerary: Itinerary | null;
 };
 
 function GeneratedItinerary({
@@ -23,7 +23,7 @@ function GeneratedItinerary({
   days,
   itinerary,
 }: Props) {
-  if (itinerary.length === 0) {
+  if (!itinerary || itinerary.days.length === 0) {
     return (
       <div className="rounded-3xl border-2 border-dashed border-slate-300 bg-white p-12 text-center shadow-sm">
         <div className="text-6xl">🌍</div>
@@ -64,7 +64,7 @@ function GeneratedItinerary({
         </p>
       </div>
 
-      {itinerary.map((day) => (
+      {itinerary.days.map((day) => (
         <DayCard
           key={day.day}
           day={day.day}

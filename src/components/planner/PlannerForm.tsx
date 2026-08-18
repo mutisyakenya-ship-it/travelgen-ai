@@ -1,4 +1,4 @@
-import type { Day, Budget } from "../../types/itinerary";
+import type { Itinerary, Budget } from "../../types/itinerary";
 import { useState } from "react";
 import DestinationField from "./DestinationField";
 import BudgetSelector from "./BudgetSelector";
@@ -56,10 +56,8 @@ itinerary,
 setItinerary
 
 ]
-
 =
-
-useState<Day[]>([]);
+useState<Itinerary | null>(null);
   const [
 
     loading,
@@ -121,7 +119,7 @@ useState<Day[]>([]);
     try {
 
       setLoading(true);
-     setItinerary([])
+     setItinerary(null)
      const result = await generateItinerary(
   destination,
   budget,
