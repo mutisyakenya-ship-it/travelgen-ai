@@ -8,7 +8,7 @@ import {
 } from "../services/firebase/trips";
 
 import DayCard from "../components/itinerary/DayCard";
-import Timeline from "../components/itinerary/TimeLine";
+import DayDetails from "../components/itinerary/DayDetails";
 
 import type { Trip } from "../types/itinerary";
 
@@ -96,104 +96,15 @@ function SharedTrip() {
         </div>
 
         <div className="mt-10 space-y-8">
-
-          {trip.itinerary.map((day) => (
-
-            <DayCard
-              key={day.day}
-              day={day.day}
-            >
-
-              <div className="space-y-6">
-
-                <Timeline
-                  activities={day.activities}
-                />
-
-                <div className="grid gap-5 md:grid-cols-2">
-
-                  <div className="rounded-xl bg-green-50 p-5">
-
-                    <h3 className="font-semibold">
-                      Estimated Cost
-                    </h3>
-
-                    <p>KES {day.estimatedCost.toLocaleString()}</p>
-
-                  </div>
-
-                  <div className="rounded-xl bg-blue-50 p-5">
-
-                    <h3 className="font-semibold">
-                      Hotel
-                    </h3>
-
-                    <p>{day.hotel}</p>
-
-                  </div>
-
-                  <div className="rounded-xl bg-purple-50 p-5">
-
-                    <h3 className="font-semibold">
-                      Airbnb
-                    </h3>
-
-                    <p>{day.airbnb}</p>
-
-                  </div>
-
-                  <div className="rounded-xl bg-orange-50 p-5">
-
-                    <h3 className="font-semibold">
-                      Attractions
-                    </h3>
-
-                    <ul className="list-disc pl-5">
-
-                      {day.attractions.map((place) => (
-                        <li key={place}>{place}</li>
-                      ))}
-
-                    </ul>
-
-                  </div>
-
-                </div>
-
-                <div className="rounded-xl bg-yellow-50 p-5">
-
-                  <h3 className="font-semibold">
-                    Restaurants
-                  </h3>
-
-                  <ul className="list-disc pl-5">
-
-                    {day.restaurants.map((restaurant) => (
-                      <li key={restaurant}>
-                        {restaurant}
-                      </li>
-                    ))}
-
-                  </ul>
-
-                </div>
-
-                <div className="rounded-xl bg-slate-100 p-5">
-
-                  <h3 className="font-semibold">
-                    Travel Tips
-                  </h3>
-
-                  <p>{day.tips}</p>
-
-                </div>
-
-              </div>
-
-            </DayCard>
-
-          ))}
-
+  {trip.itinerary.days.map((day) => (
+    <DayCard
+      key={day.day}
+      day={day.day}
+    >
+      <DayDetails day={day} />
+    </DayCard>
+  ))}
+</div>
         </div>
 
         <div className="mt-14 flex justify-center">
@@ -234,7 +145,6 @@ function SharedTrip() {
 
       </div>
 
-    </div>
   );
 }
 

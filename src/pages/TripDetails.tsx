@@ -21,7 +21,7 @@ import ExportButton from "../components/Buttons/ExportButton";
 import DeleteButton from "../components/Buttons/DeleteButton";
 import SaveButton from "../components/Buttons/SaveButton";
 
-import type { Trip, Day } from "../types/itinerary";
+import type { Trip, Itinerary  } from "../types/itinerary";
 
 function TripDetails() {
   const { id } = useParams();
@@ -50,7 +50,7 @@ function TripDetails() {
 
   const [transportType, setTransportType] = useState("");
 
-  const [itinerary, setItinerary] = useState<Day[]>([]);
+  const [itinerary, setItinerary] = useState<Itinerary | null>(null);
 
   useEffect(() => {
     loadTrip();
@@ -88,7 +88,7 @@ function TripDetails() {
     }
   }
   async function handleSave() {
-    if (!trip) return;
+    if (!trip || !itinerary) return;
 
     const user = auth.currentUser;
 

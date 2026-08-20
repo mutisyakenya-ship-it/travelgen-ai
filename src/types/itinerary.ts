@@ -66,7 +66,6 @@ export interface Day {
   activities: Activity[];
   meals: MealRecommendation[];
   transport: TransportInfo;
-  estimatedCost: number;
   cost: DailyCostBreakdown;
 }
 //trip cost summary

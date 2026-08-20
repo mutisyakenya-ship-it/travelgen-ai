@@ -45,7 +45,11 @@ Provide general expected weather conditions for the destination.
 Include:
 - Typical condition.
 - Expected temperature range.
+- humidity
+- wind speed 
+- precipitation
 - Practical weather advice.
+
 
 IMPORTANT:
 Do NOT claim to provide a live weather forecast.
@@ -107,8 +111,10 @@ Provide breakfast, lunch and dinner recommendations where appropriate.
 Each meal must contain:
 
 - type
+- name
 - restaurant
 - foodToTry
+- description
 - estimatedCost
 
 Costs must be numbers in Kenyan Shillings.
@@ -135,6 +141,27 @@ For every day provide:
 - total
 
 All values must be numbers in Kenyan Shillings.
+IMPORTANT DAILY COST CALCULATION:
+
+The "total" must equal:
+
+accommodation
++ transport
++ food
++ activities
++ miscellaneous
+
+Do not make up a separate total.
+
+The food amount should reasonably reflect the estimated meal costs.
+
+The activities amount should reasonably reflect the estimated activity costs.
+
+The transport amount should reasonably reflect the day's transportation estimate.
+
+The accommodation amount should reasonably reflect the recommended accommodation.
+
+The miscellaneous amount may include reasonable small expenses such as tips, entry fees not already included, parking, or other minor travel expenses.
 
 11. TOTAL TRIP COST
 
@@ -161,7 +188,11 @@ IMPORTANT COST RULES
 - Costs are estimates, not guaranteed prices.
 - Do not invent obviously unrealistic prices.
 - Make the budget level affect the recommendations and estimated costs.
+IMPORTANT TRIP TOTAL CALCULATION:
 
+The trip "total" must equal the sum of all daily cost totals.
+
+The category totals should represent the sum of those categories across all itinerary days.
 BUDGET BEHAVIOR
 ---------------
 
@@ -193,7 +224,7 @@ The JSON must follow EXACTLY this structure:
     "whatToExpect": [],
     "localFoods": [],
     "placesToHangOut": [],
-    "travelTips": []
+    "travelTips": [],
     "localCulture": []
   },
 
@@ -280,7 +311,6 @@ The JSON must follow EXACTLY this structure:
         "description": "",
         "estimatedCost": 0
       },
-      "estimatedCost": 0,
       "cost": {
         "accommodation": 0,
         "transport": 0,

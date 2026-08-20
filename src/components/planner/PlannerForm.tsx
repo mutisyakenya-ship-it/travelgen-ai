@@ -75,29 +75,18 @@ useState<Itinerary | null>(null);
   ] = useState("");
 
   const [
-
+    
     success,
-
     setSuccess
-
   ] = useState("");
-
-
-
   const handleSubmit = async (
 
     e: React.FormEvent
 
   ) => {
-
     e.preventDefault();
-
     setError("");
-
     setSuccess("");
-
-     
-
     if (
 
       !destination.trim()

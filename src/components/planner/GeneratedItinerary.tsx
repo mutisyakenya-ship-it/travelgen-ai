@@ -1,5 +1,5 @@
 import DayCard from "../itinerary/DayCard";
-import Timeline from "../itinerary/TimeLine";
+import DayDetails from "../itinerary/DayDetails";
 import TripHero from "./TripHero";
 
 import type { Itinerary } from "../../types/itinerary";
@@ -69,95 +69,61 @@ function GeneratedItinerary({
           key={day.day}
           day={day.day}
         >
-          <div className="space-y-6">
-
-            <Timeline
-              activities={day.activities ?? []}
-            />
-
-            <div className="grid gap-5 md:grid-cols-2">
-
-              <div className="rounded-2xl bg-green-50 p-5 shadow-sm">
-                <h3 className="flex items-center gap-2 text-lg font-semibold text-green-700">
-                   Estimated Cost
-                </h3>
-
-                <p className="mt-2 text-slate-700">
-                  {day.estimatedCost || "Not available"}
-                </p>
-              </div>
-
-              <div className="rounded-2xl bg-blue-50 p-5 shadow-sm">
-                <h3 className="flex items-center gap-2 text-lg font-semibold text-blue-700">
-                   Hotel
-                </h3>
-
-                <p className="mt-2 text-slate-700">
-                  {day.hotel || "No hotel recommendation"}
-                </p>
-              </div>
-
-              <div className="rounded-2xl bg-purple-50 p-5 shadow-sm">
-                <h3 className="flex items-center gap-2 text-lg font-semibold text-purple-700">
-                   Airbnb
-                </h3>
-
-                <p className="mt-2 text-slate-700">
-                  {day.airbnb || "No Airbnb recommendation"}
-                </p>
-              </div>
-
-              <div className="rounded-2xl bg-orange-50 p-5 shadow-sm">
-                <h3 className="flex items-center gap-2 text-lg font-semibold text-orange-700">
-                   Attractions
-                </h3>
-
-                {(day.attractions ?? []).length > 0 ? (
-                  <ul className="mt-3 list-disc space-y-1 pl-5">
-                    {day.attractions.map((place, index) => (
-                      <li key={index}>{place}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="mt-2 text-slate-700">
-                    No attractions available.
-                  </p>
-                )}
-              </div>
-
-            </div>
-
-            <div className="rounded-2xl bg-yellow-50 p-5 shadow-sm">
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-yellow-700">
-         Restaurants
-              </h3>
-
-              {(day.restaurants ?? []).length > 0 ? (
-                <ul className="mt-3 list-disc space-y-1 pl-5">
-                  {day.restaurants.map((restaurant, index) => (
-                    <li key={index}>{restaurant}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="mt-2 text-slate-700">
-                  No restaurant recommendations.
-                </p>
-              )}
-            </div>
-
-            <div className="rounded-2xl bg-slate-100 p-5 shadow-sm">
-              <h3 className="flex items-center gap-2 text-lg font-semibold">
-                Travel Tips
-              </h3>
-
-              <p className="mt-2 text-slate-700">
-                {day.tips || "No travel tips available."}
-              </p>
-            </div>
-
-          </div>
+          <DayDetails day={day} />
         </DayCard>
       ))}
+          <div className="rounded-3xl bg-slate-900 p-8 text-white shadow-xl">
+        <div className="flex flex-col gap-2">
+          <p className="text-sm font-medium uppercase tracking-wider text-slate-400">
+            Total Trip Estimate
+          </p>
+
+          <h2 className="text-4xl font-bold">
+            {itinerary.costSummary.total.toLocaleString("en-KE")} KES
+          </h2>
+
+          <p className="text-slate-400">
+            Estimated total cost for your {days}-day trip.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <div>
+            <p className="text-sm text-slate-400">Accommodation</p>
+            <p className="mt-1 font-semibold">
+              {itinerary.costSummary.accommodation.toLocaleString("en-KE")} KES
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm text-slate-400">Transport</p>
+            <p className="mt-1 font-semibold">
+              {itinerary.costSummary.transport.toLocaleString("en-KE")} KES
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm text-slate-400">Food</p>
+            <p className="mt-1 font-semibold">
+              {itinerary.costSummary.food.toLocaleString("en-KE")} KES
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm text-slate-400">Activities</p>
+            <p className="mt-1 font-semibold">
+              {itinerary.costSummary.activities.toLocaleString("en-KE")} KES
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm text-slate-400">Miscellaneous</p>
+            <p className="mt-1 font-semibold">
+              {itinerary.costSummary.miscellaneous.toLocaleString("en-KE")} KES
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

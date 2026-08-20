@@ -3,7 +3,7 @@ const activitySchema = z.object({
     title: z.string(),
     description: z.string(),
     icon: z.string(),
-    estimatedCost: z.number(),  
+    estimatedCost: z.number().nonnegative(),  
 });
 const weatherInfoSchema = z.object({
     condition: z.string(),
@@ -27,23 +27,23 @@ const mealRecommendationSchema = z.object({
     description: z.string(),
     restaurant: z.string(),
     foodToTry: z.string(),
-    estimatedCost: z.number()
+    estimatedCost: z.number().nonnegative(),
 }); 
 const transportInfoSchema = z.object({
     method: z.string(),
     description: z.string(),    
-    estimatedCost: z.number()
+    estimatedCost: z.number().nonnegative()
 });
 const dailyCostBreakdownSchema = z.object({
-    accommodation: z.number(),
-    transport: z.number(),
-    food: z.number(),
-    activities: z.number(),
-    miscellaneous: z.number(),
-    total: z.number()
+    accommodation: z.number().nonnegative(),
+    transport: z.number().nonnegative(),
+    food: z.number().nonnegative(),
+    activities: z.number().nonnegative(),
+    miscellaneous: z.number().nonnegative(),
+    total: z.number().nonnegative()
 });
 const daySchema = z.object({
-    day: z.number(),
+    day: z.coerce.number().int().positive(),
     title: z.string(),
     weather: weatherInfoSchema,
     hotel: z.string(),
@@ -54,16 +54,15 @@ const daySchema = z.object({
     activities: z.array(activitySchema),
     meals: z.array(mealRecommendationSchema),
     transport: transportInfoSchema,
-    estimatedCost: z.number(),
     cost: dailyCostBreakdownSchema,
 });
 const tripCostSummarySchema = z.object({
-    accommodation: z.number(),
-    transport: z.number(),
-    food: z.number(),
-    activities: z.number(),
-    miscellaneous: z.number(),
-    total: z.number(),
+    accommodation: z.number().nonnegative(),
+    transport: z.number().nonnegative(),
+    food: z.number().nonnegative(),
+    activities: z.number().nonnegative(),
+    miscellaneous: z.number().nonnegative(),
+    total: z.number() .nonnegative(),
     currency: z.literal("KES")
 });
 export const itinerarySchema = z.object({
