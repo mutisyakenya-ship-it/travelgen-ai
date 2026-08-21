@@ -100,7 +100,8 @@ function ChatWindow({
         assistantMessage,
       ]);
 
-    } catch {
+    } catch (error) {
+      console.error ("TravelGen AI:", error);
 
       setMessages((prev) => [
         ...prev,
@@ -142,7 +143,7 @@ function ChatWindow({
       "
     >
 
-      //header
+    
 
       <div
         className="
@@ -222,7 +223,7 @@ function ChatWindow({
 
       </div>
 
-    // imputs
+  
 
       <ChatInput
 
