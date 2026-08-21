@@ -1,174 +1,97 @@
-
+import { useItineraryStore } from "./store/itineraryStore";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { auth } from "../services/firebase/firebase";
 import { getTrips } from "../services/firebase/trips";
 import type { Trip } from "../types/itinerary";
-
 function MyTrips() {
-
+const setTrips = useItineraryStore((state) => state.setTrips);
+const setCurrentTrip = useItineraryStore((state) => state.setCurrentTrip);
   const [
-
     trips,
-
-    setTrips
-
+    setLocalTrips
   ] = useState<Trip[]>([]);
-
   const [
-
     loading,
-
     setLoading
-
   ] = useState(true);
-
   const [
-
     search,
-
     setSearch
-
   ] = useState("");
-
   const [
-
     filter,
-
     setFilter
-
   ] = useState("All");
-
   useEffect(() => {
-
     loadTrips();
-
   }, []);
-
   const filteredTrips = trips.filter((trip) => {
-
     const matchesSearch =
-
       trip.destination
         .toLowerCase()
         .includes(
-
           search.toLowerCase()
-
         );
-
     const matchesFilter =
-
       filter === "All"
-
       ||
-
       trip.travelStyle === filter;
-
     return (
-
       matchesSearch &&
-
       matchesFilter
-
     );
-
   });
-
   async function loadTrips() {
-
     try {
-
       const user = auth.currentUser;
-
       if (!user) {
-
         setLoading(false);
-
         return;
-
       }
-
-      const data = await getTrips(
-
-        user.uid
-
-      );
-
-      setTrips(
-
-        data as Trip[]
-
-      );
-
+      const data = await getTrips(user.uid);
+      setLocalTrips(data );
+      setTrips(data);
     }
-
     catch (error) {
-
       console.error(
-
         error
-
       );
-
     }
-
     finally {
-
       setLoading(false);
-
     }
-
   }
-
   if (loading) {
-
     return (
-
       <div
-
         className="
         flex
         justify-center
         items-center
         h-96
         "
-
       >
-
         <p
-
           className="
           text-slate-500
           text-lg
           "
-
         >
-
           Loading trips...
-
         </p>
-
       </div>
-
     );
-
   }
-
   return (
-
     <div
-
       className="
       max-w-6xl
       mx-auto
       px-6
       py-10
       "
-
     >
-
      <div
   className="
   mb-8
@@ -188,9 +111,7 @@ function MyTrips() {
   >
     My Trips
   </h1>
-
   <div className="flex gap-3">
-
     <Link
       to="/planner"
       className="
@@ -205,7 +126,6 @@ function MyTrips() {
     >
       Plan your Trip
     </Link>
-
     <Link
       to="/explore"
       className="
@@ -220,25 +140,16 @@ function MyTrips() {
     >
       Explore Trips
     </Link>
-
   </div>
 </div>
       <input
-
         value={search}
-
         onChange={(e) =>
-
           setSearch(
-
             e.target.value
-
           )
-
         }
-
         placeholder="Search destination..."
-
         className="
         w-full
         rounded-xl
@@ -246,83 +157,47 @@ function MyTrips() {
         p-3
         mb-6
         "
-
       />
-
       <div
-
         className="
         flex
         gap-3
         mb-8
         flex-wrap
         "
-
       >
-
         {[
-
           "All",
-
           "Adventure",
-
           "Luxury",
-
           "Budget",
-
           "Family",
           "Culture"
-
         ].map(
-
           (style) => (
-
             <button
-
               key={style}
-
               onClick={() =>
-
                 setFilter(
-
                   style
-
                 )
-
               }
-
               className={
-
                 filter === style
-
                   ?
-
                   "bg-green-700 text-white px-4 py-2 rounded-full"
-
                   :
-
                   "bg-slate-100 px-4 py-2 rounded-full"
-
               }
-
             >
-
               {style}
-
             </button>
-
           )
-
         )}
-
       </div>
-
       {
-
         filteredTrips.length === 0 && (
-
           <div
-
             className="
             rounded-3xl
             bg-white
@@ -330,72 +205,45 @@ function MyTrips() {
             shadow
             text-center
             "
-
           >
-
             <h2
-
               className="
               text-2xl
               font-semibold
               "
-
             >
-
               No Trips Found
-
             </h2>
-
             <p
-
               className="
               mt-2
               text-slate-500
               "
-
             >
-
               Try another search or filter.
-
             </p>
-
           </div>
-
         )
-
       }
-
       <div
-
         className="
         grid
         gap-6
         md:grid-cols-2
         lg:grid-cols-3
         "
-
       >
-
         {
-
           filteredTrips.map(
-
             (
-
               trip
-
             ) => (
-
               <Link
-
                 key={trip.id}
-
                 to={`/trips/${trip.id}`}
-
+                onClick={() =>setCurrentTrip(trip)}
               >
-
                 <div
-
                   className="
                   rounded-3xl
                   bg-white
@@ -408,53 +256,35 @@ function MyTrips() {
                   transition-all
                   duration-300
                   "
-
                 >
-
                   <div
-
                     className="
                     flex
                     items-start
                     justify-between
                     "
-
                   >
-
                     <div>
-
                       <h2
-
                         className="
                         text-2xl
                         font-bold
                         text-slate-800
                         "
-
                       >
-
                         {trip.destination}
-
                       </h2>
-
                       <p
-
                         className="
                         mt-1
                         text-sm
                         text-slate-500
                         "
-
                       >
-
                         {trip.days} Days
-
                       </p>
-
                     </div>
-
                     <span
-
                       className="
                       rounded-full
                       bg-green-100
@@ -464,89 +294,52 @@ function MyTrips() {
                       font-medium
                       text-green-700
                       "
-
                     >
-
                       {trip.budget}
-
                     </span>
-
                   </div>
-
                   <div
-
                     className="
                     mt-4
                     flex
                     items-center
                     gap-2
                     "
-
                   >
-
                     <span>
-
-                      
-
                     </span>
-
                     <p
-
                       className="
                       text-slate-600
                       "
-
                     >
-
                       {trip.travelStyle}
-
                     </p>
-
                   </div>
-
                   <div
-
                     className="
                     mt-6
                     flex
                     justify-end
                     "
-
                   >
-
                     <span
-
                       className="
                       text-sm
                       font-semibold
                       text-green-700
                       "
-
                     >
-
                       View Trip →
-
                     </span>
-
                   </div>
-
                 </div>
-
               </Link>
-
             )
-
           )
-
         }
-
       </div>
-
     </div>
-
   );
-
 }
-
 export default MyTrips;
-

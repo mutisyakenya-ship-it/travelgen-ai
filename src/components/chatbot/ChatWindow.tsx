@@ -17,7 +17,8 @@ function ChatWindow({
   open,
   onClose,
 }: Props) {
-  const itinerary = useItineraryStore((state) => state.itinerary);
+  const trips = useItineraryStore((state) => state.trips);
+  const currentTrip = useItineraryStore((state) => state.currentTrip);
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -44,6 +45,7 @@ function ChatWindow({
   }, [messages, loading]);
 
   if (!open) return null;
+
 
   async function sendMessage() {
 
@@ -77,7 +79,8 @@ function ChatWindow({
       const reply =
         await askTravelAssistant(
           question,
-          itinerary
+          currentTrip,
+          trips
         );
 
       const assistantMessage: Message = {

@@ -1,5 +1,5 @@
 import { getGeminiClient } from "./geminiClient";
-import type { Itinerary } from "../../types/itinerary";
+import type { Trip } from "../../types/itinerary";
 
 const SYSTEM_PROMPT = `
 You are TravelGen AI.
@@ -20,32 +20,50 @@ You can help users with:
 - Weather
 - Car rentals
 - General travel questions
-- Questions about the user's generated itinerary
+- Questions about the user's saved trips
 
-You have two modes of assistance:
+You have two modes:
 
 1. GENERAL TRAVEL ASSISTANCE
+
 Answer general travel questions using your travel knowledge.
 
-2. PERSONAL ITINERARY ASSISTANCE
-When a user's itinerary is provided, use it to answer questions
-about that specific trip.
+2. PERSONAL TRIP ASSISTANCE
 
-IMPORTANT:
-- Do not assume an itinerary contains information that it does not.
-- If information is missing from the itinerary, say so.
-- You can still provide useful general travel advice.
-- Do not unnecessarily repeat the entire itinerary.
-- Keep responses concise, friendly and practical.
+When saved trips are provided, use them to answer
+questions about the user's trips.
+
+CURRENT TRIP PRIORITY:
+
+If the user is currently viewing a trip and asks
+a question that could refer to that trip, use the
+currently viewed trip first.
+
+If the user explicitly mentions another destination
+or saved trip, use the matching saved trip.
+
+SAVED TRIP QUESTIONS:
+
+You can answer questions such as:
+
+- What hotel did I choose?
+- What restaurants are recommended?
+- What activities are planned?
+- How much does Day 2 cost?
+- How much are the activities on Day 3?
+- How much is my entire trip?
+- What transport did I choose?
+- Compare my saved trips.
+- Which trip is cheaper?
+- What attractions are included?
 
 COST QUESTIONS:
 
-- For the total cost of all activities on a specific day,
+- For the total cost of activities on a specific day,
   use that day's cost.activities value.
 
 - For the cost of a specific activity,
-  find that activity inside the day's activities array
-  and use its estimatedCost value.
+  use that activity's estimatedCost value.
 
 - For the total cost of a specific day,
   use that day's cost.total value.
@@ -58,28 +76,65 @@ COST QUESTIONS:
 
 - Always mention the day when answering day-specific
   cost questions.
+
+IMPORTANT:
+
+- Never invent information.
+- Never assume information exists if it is not provided.
+- If information is missing, say so.
+- General travel questions can still be answered without saved trips.
+- Do not unnecessarily repeat the entire itinerary.
+- Keep responses concise, friendly and practical.
 `;
 
 export async function askTravelAssistant(
   question: string,
-  itinerary?: Itinerary | null
+  currentTrip: Trip | null,
+  trips: Trip[]
 ): Promise<string> {
   const ai = await getGeminiClient();
 
-  const itineraryContext = itinerary
-    ? `
-CURRENT USER ITINERARY:
+  const savedTripsContext =
+    trips.length > 0
+      ? `
+USER'S SAVED TRIPS:
 
-${JSON.stringify(itinerary, null, 2)}
+${JSON.stringify(
+  trips.map((trip) => ({
+    id: trip.id,
+    destination: trip.destination,
+    budget: trip.budget,
+    days: trip.days,
+    travelStyle: trip.travelStyle,
+    accommodationType: trip.accommodationType,
+    transportType: trip.transportType,
+    itinerary: trip.itinerary,
+  })),
+  null,
+  2
+)}
+`
+      : `
+The user has no saved trips.
+`;
+
+  const currentTripContext = currentTrip
+    ? `
+CURRENTLY VIEWED TRIP:
+
+Trip ID: ${currentTrip.id}
+Destination: ${currentTrip.destination}
 `
     : `
-The user currently has no generated itinerary available.
+The user is not currently viewing a specific trip.
 `;
 
   const prompt = `
 ${SYSTEM_PROMPT}
 
-${itineraryContext}
+${currentTripContext}
+
+${savedTripsContext}
 
 USER QUESTION:
 ${question}
