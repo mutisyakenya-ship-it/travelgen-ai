@@ -23,7 +23,8 @@ function GeneratedItinerary({
   days,
   itinerary,
 }: Props) {
-  if (!itinerary || itinerary.days.length === 0) {
+  console.log("Generated itinerary:", itinerary);
+  if (!itinerary || !Array.isArray(itinerary.days)|| itinerary.days.length === 0 ) {
     return (
       <div className="rounded-3xl border-2 border-dashed border-slate-300 bg-white p-12 text-center shadow-sm">
         <div className="text-6xl">🌍</div>
