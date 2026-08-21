@@ -1,3 +1,4 @@
+import { useItineraryStore } from "./store/itineraryStore";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { auth } from "../services/firebase/firebase";
@@ -27,7 +28,12 @@ function TripDetails() {
   const { id } = useParams();
 
   const navigate = useNavigate();
-
+  const setCurrenttrip = useItineraryStore(
+    (state) => state.setCurrentTrip
+  );
+const removeTrip = useItineraryStore(
+  (state) => state.removeTrip
+);
   const itineraryRef = useRef<HTMLDivElement>(null);
 
   const [trip, setTrip] = useState<Trip | null>(null);
@@ -73,7 +79,7 @@ function TripDetails() {
       }
 
       setTrip(data);
-
+      setCurrenttrip(data);
       setDestination(data.destination);
       setBudget(data.budget);
       setDays(data.days);
@@ -138,7 +144,7 @@ function TripDetails() {
     if (!confirmed) return;
 
     await deleteTrip(user.uid, trip.id);
-
+    removeTrip(trip.id);
     navigate("/portfolio");
   }
 
