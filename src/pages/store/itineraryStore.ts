@@ -14,6 +14,8 @@ type ItineraryStore = {
 
   setCurrentTrip: (trip: Trip | null) => void;
 
+  removeTrip: (tripId: string) => void;
+
   clearItinerary: () => void;
 
   clearTrips: () => void;
@@ -39,6 +41,24 @@ export const useItineraryStore = create<ItineraryStore>((set) => ({
       currentTrip: trip,
       itinerary: trip?.itinerary ?? null,
     });
+  },
+
+  removeTrip: (tripId) => {
+    set((state) => ({
+      trips: state.trips.filter(
+        (trip) => trip.id !== tripId
+      ),
+
+      currentTrip:
+        state.currentTrip?.id === tripId
+          ? null
+          : state.currentTrip,
+
+      itinerary:
+        state.currentTrip?.id === tripId
+          ? null
+          : state.itinerary,
+    }));
   },
 
   clearItinerary: () => {
