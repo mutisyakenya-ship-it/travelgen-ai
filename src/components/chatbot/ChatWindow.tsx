@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
-
+import { useItineraryStore } from "../../pages/store/itineraryStore";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import TypingIndicator from "./TypingIndicator";
@@ -17,6 +17,7 @@ function ChatWindow({
   open,
   onClose,
 }: Props) {
+  const itinerary = useItineraryStore((state) => state.itinerary);
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -74,7 +75,10 @@ function ChatWindow({
     try {
 
       const reply =
-        await askTravelAssistant(question);
+        await askTravelAssistant(
+          question,
+          itinerary
+        );
 
       const assistantMessage: Message = {
 

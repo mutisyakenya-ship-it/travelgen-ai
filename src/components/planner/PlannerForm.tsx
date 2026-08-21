@@ -1,4 +1,5 @@
 import type { Itinerary, Budget } from "../../types/itinerary";
+import { useItineraryStore } from "../../pages/store/itineraryStore";
 import { useState } from "react";
 import DestinationField from "./DestinationField";
 import BudgetSelector from "./BudgetSelector";
@@ -58,6 +59,9 @@ setItinerary
 ]
 =
 useState<Itinerary | null>(null);
+const setGlobalItinerary = useItineraryStore(
+  (state) => state.setItinerary
+);
   const [
 
     loading,
@@ -75,7 +79,7 @@ useState<Itinerary | null>(null);
   ] = useState("");
 
   const [
-    
+
     success,
     setSuccess
   ] = useState("");
@@ -119,6 +123,7 @@ useState<Itinerary | null>(null);
 );
 
 setItinerary(result);
+setGlobalItinerary(result);
 setTimeout(() => {
   document
     .getElementById("generated-itinerary")
