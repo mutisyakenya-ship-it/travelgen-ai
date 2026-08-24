@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function CTA() {
   return (
 
-    <section className="bg-green-700 py-24">
+    <section className="bg-[var(--color-primary)] py-24">
 
       <div className="mx-auto max-w-5xl px-6 text-center">
 
@@ -13,7 +13,7 @@ function CTA() {
 
         </h2>
 
-        <p className="mt-6 text-lg text-green-100">
+        <p className="mt-6 text-lg text-[var(--color-primary-light)]">
 
           Build personalized itineraries,
           discover attractions and travel smarter.
@@ -24,7 +24,7 @@ function CTA() {
 
           to="/planner"
 
-          className="mt-10 inline-block rounded-xl bg-white px-8 py-4 font-semibold text-green-700 transition hover:bg-slate-100"
+          className="mt-10 inline-block rounded-xl bg-[var(--color-surface)] px-8 py-4 font-semibold text-[var(--color-primary)] transition hover:bg-[var(--color-accent-light)]"
 
         >
 

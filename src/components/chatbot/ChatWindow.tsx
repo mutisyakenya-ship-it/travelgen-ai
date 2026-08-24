@@ -194,8 +194,6 @@ function ChatWindow({
 
       </div>
 
-      //messages
-
       <div
         className="
         flex-1

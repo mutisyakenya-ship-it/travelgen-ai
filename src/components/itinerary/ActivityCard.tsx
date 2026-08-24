@@ -24,11 +24,11 @@ return(
 
 className="
 rounded-2xl
-bg-white
+bg-[var(--color-surface)]
 p-4
 border
-border-slate-200
-shadow-sm
+border-[var(--color-border)]
+shadow-[var(--shadow-soft)]
 "
 
 >
@@ -61,7 +61,7 @@ text-3xl
 
 className="
 font-semibold
-text-slate-800
+text-[var(--color-text)]
 "
 
 >
@@ -74,7 +74,7 @@ text-slate-800
 
 className="
 text-sm
-text-slate-500
+text-[var(--color-text-secondary)]
 mt-1
 "
 

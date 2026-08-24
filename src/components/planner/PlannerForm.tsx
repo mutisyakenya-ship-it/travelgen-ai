@@ -227,9 +227,10 @@ await saveTrip(user.uid, {
 
         className="
         rounded-3xl
-        bg-white
+        border border-[var(--color-border)]
+        bg-[var(--color-surface)]
         p-8
-        shadow-xl
+        shadow-[var(--shadow-card)]
         space-y-6
         "
 
@@ -240,7 +241,7 @@ await saveTrip(user.uid, {
           className="
           text-3xl
           font-bold
-          text-slate-800
+          text-[var(--color-text)]
           "
 
         >
@@ -259,9 +260,9 @@ await saveTrip(user.uid, {
 
               className="
               rounded-xl
-              bg-red-100
+              bg-[var(--color-error)]/10
               p-4
-              text-red-700
+              text-[var(--color-error)]
               "
 
             >
@@ -284,9 +285,9 @@ await saveTrip(user.uid, {
 
               className="
               rounded-xl
-              bg-green-100
+              bg-[var(--color-success)]/10
               p-4
-              text-green-700
+              text-[var(--color-success)]
               "
 
             >

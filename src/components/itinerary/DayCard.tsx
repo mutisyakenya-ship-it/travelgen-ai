@@ -28,9 +28,10 @@ return(
 
 className="
 rounded-3xl
-bg-white
+border border-[var(--color-border)]
+bg-[var(--color-surface)]
 p-6
-shadow-lg
+shadow-[var(--shadow-soft)]
 space-y-5
 "
 
@@ -41,7 +42,7 @@ space-y-5
 className="
 text-2xl
 font-bold
-text-slate-800
+text-[var(--color-primary)]
 "
 
 >

@@ -16,7 +16,7 @@ function TripHero({
   days,
 }: Props) {
   return (
-    <div className="overflow-hidden rounded-3xl bg-gradient-to-r from-green-700 to-emerald-500 text-white shadow-xl">
+    <div className="overflow-hidden rounded-3xl bg-[var(--color-primary)] text-white shadow-[var(--shadow-card)]">
 
       <div className="p-10">
 
@@ -24,15 +24,15 @@ function TripHero({
           {destination}
         </h1>
 
-        <p className="mt-3 text-green-100 text-lg">
+        <p className="mt-3 text-lg text-[var(--color-primary-light)]">
           Your personalised AI travel itinerary
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
 
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-5">
 
-            <p className="text-sm text-green-100">
+            <p className="text-sm text-[var(--color-primary-light)]">
               Budget
             </p>
 
@@ -42,9 +42,9 @@ function TripHero({
 
           </div>
 
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-5">
 
-            <p className="text-sm text-green-100">
+            <p className="text-sm text-[var(--color-primary-light)]">
               Duration
             </p>
 
@@ -54,9 +54,9 @@ function TripHero({
 
           </div>
 
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-5">
 
-            <p className="text-sm text-green-100">
+            <p className="text-sm text-[var(--color-primary-light)]">
               Travel Style
             </p>
 
@@ -66,9 +66,9 @@ function TripHero({
 
           </div>
 
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-5">
 
-            <p className="text-sm text-green-100">
+            <p className="text-sm text-[var(--color-primary-light)]">
               Accommodation
             </p>
 
@@ -78,9 +78,9 @@ function TripHero({
 
           </div>
 
-          <div className="rounded-2xl bg-white/10 p-5 backdrop-blur">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-5">
 
-            <p className="text-sm text-green-100">
+            <p className="text-sm text-[var(--color-primary-light)]">
               Transport
             </p>
 

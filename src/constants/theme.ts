@@ -1,29 +1,29 @@
 export const COLORS = {
-  primary: '#1B4332',
-  secondary: '#1D3557',
-  accent: '#D4A017',
+  primary: 'var(--color-primary)',
+  secondary: 'var(--color-primary-dark)',
+  accent: 'var(--color-accent)',
 
-  background: '#F8FAFC',
-  surface: '#FFFFFF',
+  background: 'var(--color-background)',
+  surface: 'var(--color-surface)',
 
-  text: '#0F172A',
-  muted: '#64748B',
+  text: 'var(--color-text)',
+  muted: 'var(--color-text-muted)',
 
-  success: '#16A34A',
-  warning: '#F59E0B',
-  error: '#DC2626',
+  success: 'var(--color-success)',
+  warning: 'var(--color-warning)',
+  error: 'var(--color-error)',
 
-  border: '#E2E8F0',
+  border: 'var(--color-border)',
 } as const;
 
 export const SHADOWS = {
-  sm: '0 1px 2px rgba(0,0,0,0.05)',
+  sm: 'var(--shadow-soft)',
 
-  md: '0 4px 12px rgba(0,0,0,0.08)',
+  md: 'var(--shadow-soft)',
 
-  lg: '0 12px 24px rgba(0,0,0,0.12)',
+  lg: 'var(--shadow-card)',
 
-  xl: '0 20px 40px rgba(0,0,0,0.15)',
+  xl: 'var(--shadow-card)',
 } as const;
 
 export const RADIUS = {
@@ -56,10 +56,10 @@ export const SPACING = {
 
 export const GRADIENTS = {
   hero:
-    'linear-gradient(135deg, #1B4332 0%, #1D3557 100%)',
+    'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)',
 
   cta:
-    'linear-gradient(135deg, #1B4332 0%, #D4A017 100%)',
+    'linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%)',
 } as const;
 
 export const TYPOGRAPHY = {

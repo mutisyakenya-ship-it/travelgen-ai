@@ -22,12 +22,12 @@ function GenerateButton({
       className="
       w-full
       rounded-xl
-      bg-green-700
+      bg-[var(--color-primary)]
       py-3
       font-semibold
       text-white
       transition
-      hover:bg-green-800
+      hover:bg-[var(--color-primary-dark)]
       disabled:opacity-60
       disabled:cursor-not-allowed
       "

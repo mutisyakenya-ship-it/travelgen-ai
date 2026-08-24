@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300">
+    <footer className="bg-[var(--color-primary-dark)] text-[var(--color-primary-light)]">
       <div className="mx-auto max-w-7xl px-6 py-14">
 
         <div className="grid gap-10 md:grid-cols-4">
@@ -13,7 +13,7 @@ function Footer() {
               TravelGen AI
             </h2>
 
-            <p className="mt-4 text-sm leading-7 text-slate-400">
+            <p className="mt-4 text-sm leading-7 text-[var(--color-primary-light)]">
               AI-powered travel planning built to help travelers discover,
               organize and share unforgettable adventures across Kenya.
             </p>
@@ -30,7 +30,7 @@ function Footer() {
               <li>
                 <Link
                   to="/planner"
-                  className="hover:text-green-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   Planner
                 </Link>
@@ -39,7 +39,7 @@ function Footer() {
               <li>
                 <Link
                   to="/portfolio"
-                  className="hover:text-green-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   Portfolio
                 </Link>
@@ -48,7 +48,7 @@ function Footer() {
               <li>
                 <Link
                   to="/explore"
-                  className="hover:text-green-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   Explore Trips
                 </Link>
@@ -68,7 +68,7 @@ function Footer() {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-green-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   About
                 </Link>
@@ -77,7 +77,7 @@ function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="hover:text-green-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   Contact
                 </Link>
@@ -86,7 +86,7 @@ function Footer() {
               <li>
                 <Link
                   to="/privacy"
-                  className="hover:text-green-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   Privacy Policy
                 </Link>
@@ -108,7 +108,7 @@ function Footer() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-pink-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   Instagram
                 </a>
@@ -119,7 +119,7 @@ function Footer() {
                   href="https://x.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-sky-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   X (Twitter)
                 </a>
@@ -130,7 +130,7 @@ function Footer() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition"
+                  className="transition hover:text-[var(--color-accent)]"
                 >
                   LinkedIn
                 </a>
@@ -142,9 +142,9 @@ function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 border-t border-slate-700 pt-6 flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--color-primary-light)]/30 pt-6 md:flex-row">
 
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-[var(--color-text-muted)]">
             © {new Date().getFullYear()} TravelGen AI. All rights reserved.
           </p>
 
@@ -152,21 +152,21 @@ function Footer() {
 
             <Link
               to="/privacy"
-              className="hover:text-green-400 transition"
+              className="transition hover:text-[var(--color-accent)]"
             >
               Privacy
             </Link>
 
             <Link
               to="/contact"
-              className="hover:text-green-400 transition"
+              className="transition hover:text-[var(--color-accent)]"
             >
               Contact
             </Link>
 
             <Link
               to="/about"
-              className="hover:text-green-400 transition"
+              className="transition hover:text-[var(--color-accent)]"
             >
               About
             </Link>

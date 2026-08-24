@@ -1,28 +1,128 @@
 @import "tailwindcss";
 
+/* ========================================
+   TravelGen Design System
+   Source of Truth
+   ======================================== */
+
+:root {
+  /* ================================
+     BRAND
+     ================================ */
+
+  --color-primary: #0b3d32;
+  --color-primary-dark: #072c25;
+  --color-primary-light: #dce9e5;
+
+  --color-accent: #c9a45c;
+  --color-accent-light: #f1e6cd;
+  --color-accent-dark: #a98545;
+
+  /* ================================
+     BACKGROUNDS
+     ================================ */
+
+  --color-background: #f7f3ea;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f1eee6;
+
+  /* ================================
+     TYPOGRAPHY
+     ================================ */
+
+  --color-text: #17201d;
+  --color-text-secondary: #4d5a55;
+  --color-text-muted: #7b8580;
+
+  /* ================================
+     UI
+     ================================ */
+
+  --color-border: #e2dfd6;
+  --color-border-light: #ece9e1;
+
+  /* ================================
+     FEEDBACK
+     ================================ */
+
+  --color-success: #28734a;
+  --color-warning: #b7791f;
+  --color-error: #c0392b;
+
+  /* ================================
+     EFFECTS
+     ================================ */
+
+  --shadow-soft: 0 8px 30px rgba(11, 61, 50, 0.08);
+  --shadow-card: 0 12px 40px rgba(11, 61, 50, 0.10);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
- font-family:
+  margin: 0;
+  font-family:
+    Inter,
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  
-  margin: 0;
-  background: #F8FAFC;
 
-  color: #0F172A;
+  background: var(--color-background);
+  color: var(--color-text);
 
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* ================================
+   TEXT SELECTION
+   ================================ */
+
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-primary-dark);
+}
+
+/* ================================
+   SCROLLBAR
+   ================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ================================
+   TRAVELGEN ANIMATIONS
+   ================================ */
+
 @keyframes float-safari {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
+
 .animate-float-safari {
   animation: float-safari 4.5s ease-in-out infinite;
 }

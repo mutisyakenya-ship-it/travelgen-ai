@@ -49,11 +49,15 @@ e.target.value
 className="
 w-full
 rounded-xl
-border
+border border-[var(--color-border)]
+bg-[var(--color-surface)]
 p-3
+text-[var(--color-text)]
+placeholder:text-[var(--color-text-muted)]
+focus:border-[var(--color-primary)]
 focus:outline-none
 focus:ring-2
-focus:ring-green-700
+focus:ring-[var(--color-primary-light)]
 "
 
 />

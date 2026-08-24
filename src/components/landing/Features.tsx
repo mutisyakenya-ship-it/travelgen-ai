@@ -53,7 +53,7 @@ const features = [
 
 function Features() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-[var(--color-surface)] py-24">
 
       <div className="mx-auto max-w-7xl px-6">
 
@@ -65,7 +65,7 @@ function Features() {
 
           </h2>
 
-          <p className="mt-4 text-slate-600">
+          <p className="mt-4 text-[var(--color-text-secondary)]">
 
             Everything you need to create memorable
             journeys across Kenya.
@@ -84,12 +84,12 @@ function Features() {
 
               <div
                 key={feature.title}
-                className="rounded-3xl border border-slate-200 p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-xl"
+                className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-[var(--shadow-soft)] transition hover:-translate-y-2 hover:shadow-[var(--shadow-card)]"
               >
 
                 <Icon
                   size={32}
-                  className="text-green-700"
+                  className="text-[var(--color-primary)]"
                 />
 
                 <h3 className="mt-5 text-xl font-semibold">
@@ -98,7 +98,7 @@ function Features() {
 
                 </h3>
 
-                <p className="mt-3 text-slate-600">
+                <p className="mt-3 text-[var(--color-text-secondary)]">
 
                   {feature.description}
 
