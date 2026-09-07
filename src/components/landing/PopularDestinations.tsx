@@ -42,7 +42,7 @@ function PopularDestinations(){
 
 return(
 
-<section className="py-24 bg-white">
+<section className="bg-[var(--color-surface)] py-16 sm:py-20">
 
 <div className="mx-auto max-w-7xl px-6">
 
@@ -54,7 +54,7 @@ Popular Destinations
 
 </h2>
 
-<p className="mt-4 text-slate-600">
+<p className="mt-4 text-[var(--color-text-secondary)]">
 
 Explore Kenya's most loved travel experiences.
 
@@ -62,7 +62,7 @@ Explore Kenya's most loved travel experiences.
 
 </div>
 
-<div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+<div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-5">
 
 {destinations.map((destination)=>(
 
@@ -70,7 +70,7 @@ Explore Kenya's most loved travel experiences.
 
 key={destination.id}
 
-className="overflow-hidden rounded-3xl shadow-md transition hover:-translate-y-2 hover:shadow-xl"
+className="min-w-[11rem] snap-start overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)] sm:min-w-0"
 
 >
 
@@ -80,13 +80,13 @@ src={destination.image}
 
 alt={destination.name}
 
-className="h-72 w-full object-cover"
+className="h-40 w-full object-cover sm:h-44"
 
 />
 
-<div className="p-5">
+<div className="p-4">
 
-<h3 className="font-semibold text-xl">
+<h3 className="text-lg font-semibold text-[var(--color-text)]">
 
 {destination.name}
 

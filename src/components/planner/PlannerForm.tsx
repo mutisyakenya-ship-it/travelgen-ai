@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import type { Itinerary, Budget } from "../../types/itinerary";
 import { useItineraryStore } from "../../pages/store/itineraryStore";
 import { useState } from "react";
@@ -16,14 +17,14 @@ import {
 } from "../../services/gemini/itineraryServices";
 
 function PlannerForm() {
-
+  const [searchParams] = useSearchParams();
   const [
 
     destination,
 
     setDestination
 
-  ] = useState("");
+  ] = useState(searchParams.get("destination")?? "");
 
  const [budget, setBudget] = useState<Budget>("Medium");
   const [
@@ -282,7 +283,6 @@ await saveTrip(user.uid, {
           success && (
 
             <div
-
               className="
               rounded-xl
               bg-[var(--color-success)]/10
